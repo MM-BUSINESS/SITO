@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malcolm Ibrhim - Media Buyer CPA Specialist Roma</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Inter, Poppins, Montserrat, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, #0F2847 0%, #17A2B8 100%);
+            color: white;
+            padding: 100px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            color: #fff;
+        }
+
+        .hero-text .subheadline {
+            font-size: 20px;
+            color: #E0E0E0;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .hero-text .description {
+            font-size: 16px;
+            color: #fff;
+            margin-bottom: 40px;
+            line-height: 1.8;
+            max-width: 500px;
+        }
+
+        .cta-button {
+            background: #17A2B8;
+            color: white;
+            padding: 16px 32px;
+            font-size: 18px;
+            font-weight: 700;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 8px 15px rgba(23, 162, 184, 0.4);
+        }
+
+        .cta-button:hover {
+            background: #138496;
+            transform: scale(1.08);
+            box-shadow: 0 12px 25px rgba(23, 162, 184, 0.6);
+        }
+
+        .cta-small {
+            display: block;
+            font-size: 13px;
+            color: #B0B0B0;
+            margin-top: 12px;
+        }
+
+        .hero-image {
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+        }
+
+        .infographic {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .infographic-item {
+            margin: 20px 0;
+        }
+
+        .before-cpa {
+            font-size: 18px;
+            color: #FF6B6B;
+            text-decoration: line-through;
+            margin-bottom: 15px;
+        }
+
+        .arrow-down {
+            font-size: 32px;
+            color: #17A2B8;
+            margin: 15px 0;
+        }
+
+        .after-cpa {
+            font-size: 36px;
+            font-weight: 700;
+            color: #4CAF50;
+            margin-bottom: 15px;
+        }
+
+        .reduction {
+            font-size: 18px;
+            font-weight: 700;
+            color: #4CAF50;
+        }
+
+        /* PAIN POINTS SECTION */
+        .pain-points {
+            background: #FFFFFF;
+            padding: 80px 40px;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 42px;
+            font-weight: 700;
+            color: #0F2847;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: #666;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .card {
+            background: #FFFFFF;
+            border-left: 5px solid #17A2B8;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(23, 162, 184, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 12px 25px rgba(23, 162, 184, 0.25);
+            transform: translateY(-8px);
+        }
+
+        .card-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0F2847;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .card.orange {
+            border-left-color: #17A2B8;
+        }
+
+        /* SOLUZIONE SECTION */
+        .solution {
+            background: #F8F9FA;
+            padding: 80px 40px;
+        }
+
+        .steps-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .step {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            font-size: 60px;
+            font-weight: 700;
+            color: #17A2B8;
+            text-align: center;
+            line-height: 1;
+        }
+
+        .step:nth-child(2) .step-number {
+            color: #0F2847;
+        }
+
+        .step:nth-child(3) .step-number {
+            color: #17A2B8;
+        }
+
+        .step-content h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0F2847;
+            margin-bottom: 15px;
+        }
+
+        .step-content p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .step-icon {
+            font-size: 40px;
+            margin-top: 10px;
+        }
+
+        /* CASE STUDIES SECTION */
+        .case-studies {
+            background: #FFFFFF;
+            padding: 80px 40px;
+        }
+
+        .case-study {
+            background: #F8F9FA;
+            border-left: 5px solid #17A2B8;
+            padding: 40px;
+            margin-bottom: 40px;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(23, 162, 184, 0.15);
+        }
+
+        .case-study-header {
+            background: linear-gradient(135deg, #0F2847 0%, #17A2B8 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin: -40px -40px 30px -40px;
+            padding-left: 40px;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .case-study-metric {
+            font-size: 36px;
+            font-weight: 700;
+            color: #0F2847;
+            margin-bottom: 10px;
+        }
+
+        .case-study-secondary {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0F2847;
+            margin-bottom: 8px;
+        }
+
+        .case-study-duration {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .case-study-content {
+            font-size: 15px;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .case-study-content strong {
+            color: #0F2847;
+        }
+
+        /* PRICING SECTION */
+        .pricing {
+            background: linear-gradient(135deg, #1A1A2E 0%, #16213E 100%);
+            padding: 80px 40px;
+            color: white;
+        }
+
+        .pricing-title {
+            font-size: 42px;
+            font-weight: 700;
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .pricing-subtitle {
+            font-size: 18px;
+            color: white;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .pricing-card {
+            background: white;
+            color: #333;
+            padding: 50px;
+            border-radius: 8px;
+            border: 2px solid #17A2B8;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .pricing-model {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+        }
+
+        .pricing-model-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0F2847;
+            margin-bottom: 15px;
+        }
+
+        .pricing-model p {
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+
+        .pricing-example {
+            font-size: 12px;
+            color: #999;
+            font-style: italic;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .guarantees {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+        }
+
+        .guarantees h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0F2847;
+            margin-bottom: 15px;
+        }
+
+        .guarantees ul {
+            list-style: none;
+        }
+
+        .guarantees li {
+            font-size: 15px;
+            color: #333;
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .guarantees li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+        }
+
+        .included {
+            padding-top: 20px;
+        }
+
+        .included h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0F2847;
+            margin-bottom: 15px;
+        }
+
+        .included ul {
+            list-style: none;
+        }
+
+        .included li {
+            font-size: 15px;
+            color: #333;
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .included li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            color: #17A2B8;
+        }
+
+        /* FAQ SECTION */
+        .faq {
+            background: #FFFFFF;
+            padding: 80px 40px;
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .faq-question {
+            background: #F8F9FA;
+            padding: 20px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 700;
+            color: #0F2847;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            border-radius: 6px;
+            border-left: 4px solid transparent;
+        }
+
+        .faq-question:hover {
+            background: #E8F4F8;
+            border-left-color: #17A2B8;
+        }
+
+        .faq-toggle {
+            font-size: 24px;
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 20px;
+            font-size: 15px;
+            color: #666;
+            line-height: 1.8;
+            background: #FFFFFF;
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        /* FINAL CTA SECTION */
+        .final-cta {
+            background: linear-gradient(135deg, #0F2847 0%, #17A2B8 100%);
+            color: white;
+            padding: 100px 40px;
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .final-cta p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            color: #E0E0E0;
+        }
+
+        .contact-info {
+            font-size: 16px;
+            margin-top: 40px;
+            line-height: 2;
+        }
+
+        .contact-info a {
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-text {
+            font-size: 14px;
+            color: #B0B0B0;
+            margin-top: 30px;
+            font-style: italic;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: #0F2847;
+            color: white;
+            padding: 60px 40px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-col p {
+            font-size: 14px;
+            color: #B0B0B0;
+            line-height: 1.8;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col a {
+            color: #B0B0B0;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-col a:hover {
+            color: #17A2B8;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            text-align: center;
+            font-size: 12px;
+            color: #B0B0B0;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-text h1 {
+                font-size: 36px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .step {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .step-number {
+                text-align: left;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 60px 20px;
+            }
+
+            .pain-points,
+            .solution,
+            .case-studies,
+            .pricing,
+            .faq,
+            .final-cta {
+                padding: 60px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-text">
+                <h1>Vuoi Clienti Reali Dal Web?<br>Anche Con Piccoli Budget Possiamo Farlo.</h1>
+                <p class="subheadline">Non promesse vuote. Strategie che funzionano<br>per aumentare il tuo fatturato.</p>
+                <p class="description">Sono Malcolm Ibrhim. Dal 2023, aiuto local business a Roma a trovare clienti attraverso i social. A prescindere dal budget che hai, troviamo insieme la strategia migliore per portare un ritorno concreto al tuo investimento. Sei pronto a trasformare il tuo business in una macchina che genera clienti veri?</p>
+                <button class="cta-button" onclick="scrollToFinal()">PRENOTA CONSULENZA GRATUITA</button>
+                <span class="cta-small">15 min call - Zero impegno</span>
+            </div>
+            <div class="hero-image">
+                <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/a3c1bd0d-fae1-44fe-82f1-915faea63c08" alt="Malcolm Ibrhim Media Buyer" style="max-width: 100%; border-radius: 12px; margin-bottom: 30px;">
+                <div class="infographic">
+                    <div class="infographic-item">
+                        <div class="after-cpa" style="color: #FFD700; font-size: 28px;">Risultati Garantiti</div>
+                        <div class="reduction" style="color: #FFFFFF; font-size: 16px; margin-top: 10px;">Strategie testate e verificate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAIN POINTS SECTION -->
+    <section class="pain-points">
+        <div class="section-container">
+            <h2 class="section-title">Il Tuo Problema Potrebbe Essere Uno Di Questi</h2>
+            <p class="section-subtitle">Non stai sfruttando il potenziale dei social media</p>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">🎯</div>
+                    <h3>Non Sai Come Iniziare</h3>
+                    <p>Vuoi avere presenze sui social e portare clienti, ma non sai da dove partire. Non vuoi rischiare soldi senza un piano.</p>
+                </div>
+                <div class="card orange">
+                    <div class="card-icon">❌</div>
+                    <h3>Hai Provato Ma Non Funziona</h3>
+                    <p>Hai già speso soldi in pubblicità sui social ma i risultati non ci sono. Non sai quale sia il problema.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">💡</div>
+                    <h3>Vuoi Una Soluzione Semplice</h3>
+                    <p>Non vuoi perdere tempo con strategie complicate. Cerchi qualcuno che sappia fare questo meglio di te.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLUZIONE SECTION -->
+    <section class="solution">
+        <div class="steps-container">
+            <h2 class="section-title">Come Funziona Il Nostro Lavoro</h2>
+            <p class="section-subtitle">Tre passi semplici per portare risultati concreti</p>
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Analizziamo Il Tuo Business</h3>
+                    <p>Iniziamo con una consulenza guardiamo il tuo business, capiamo chi sono veramente i tuoi clienti ideali, e vediamo quanto potenziale c'è in attesa di essere scoperto.</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Creiamo Una Strategia Personalizzata</h3>
+                    <p>Non usiamo approcci generici. Sviluppiamo una strategia fatta su misura per il tuo business, il tuo budget e i tuoi obiettivi. Semplice, diretta, efficace.</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Ottimizziamo Continuamente</h3>
+                    <p>Lanciamo le campagne e monitoriamo i risultati. Se qualcosa non funziona, lo aggiustiamo. Se funziona, lo scaliamo. Trasparenza totale su quello che stai ottenendo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CASE STUDIES SECTION -->
+    <section class="case-studies">
+        <div class="section-container">
+            <h2 class="section-title">Ho Aiutato Diversi Business A Crescere</h2>
+            <p class="section-subtitle">Storie reali di imprenditori che hanno visto risultati concreti</p>
+
+            <div class="case-study">
+                <div class="case-study-header">NEGOZIO ABBIGLIAMENTO - BOCCEA</div>
+                <div class="case-study-metric">Ha Trovato 28 Nuovi Clienti Al Mese</div>
+                <div class="case-study-secondary">E Ha Aumentato Le Vendite Significativamente</div>
+                <div class="case-study-duration">Lavoro iniziato a Gennaio 2024</div>
+                <div class="case-study-content">
+                    <p><strong>LA SITUAZIONE INIZIALE</strong><br>Il proprietario spendeva soldi in pubblicità sui social ma non vedeva risultati. Molte visualizzazioni, pochi clienti reali.</p>
+                    <p style="margin-top: 15px;"><strong>COSA ABBIAMO FATTO</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Identificato il vero cliente ideale - non tutti a Roma, ma persone nella sua zona</li>
+                        <li>Creato contenuti che parlano veramente al suo target</li>
+                        <li>Messo in piedi una strategia che porta clienti veri, non solo numeri</li>
+                    </ul>
+                    <p style="margin-top: 15px;"><strong>IL RISULTATO</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>28 nuovi clienti al mese - ogni mese</li>
+                        <li>Aumento significativo dei fatturati</li>
+                        <li>Clienti che ritornano perché soddisfatti</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="case-study">
+                <div class="case-study-header">STUDIO DENTISTICO - BUFALOTTA</div>
+                <div class="case-study-metric">Ha Raddoppiato Gli Appuntamenti</div>
+                <div class="case-study-secondary">E Ora Continua A Crescere Costantemente</div>
+                <div class="case-study-duration">Lavoro iniziato a Marzo 2024</div>
+                <div class="case-study-content">
+                    <p><strong>LA SITUAZIONE INIZIALE</strong><br>Lo studio aveva pochi pazienti nuovi ogni mese e non sapeva come attrarre più gente. La pubblicità precedente non aveva funzionato.</p>
+                    <p style="margin-top: 15px;"><strong>COSA ABBIAMO FATTO</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Trovato chi veramente stava cercando un dentista nella sua zona</li>
+                        <li>Mostrato il valore dello studio attraverso contenuti autentici</li>
+                        <li>Creato un flusso continuativo di gente interessata</li>
+                    </ul>
+                    <p style="margin-top: 15px;"><strong>IL RISULTATO</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Passato da 5 a 18 appuntamenti qualificati al mese</li>
+                        <li>La maggior parte dei contatti che arrivano si trasforma in pazienti</li>
+                        <li>Studio più pieno e prenotazioni stabili</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="case-study">
+                <div class="case-study-header">ADDESTRAMENTO CINOFILO - CASE ROSSE</div>
+                <div class="case-study-metric">Ha Triplicato I Clienti Con Budget Piccolissimo</div>
+                <div class="case-study-secondary">Provando Che Budget Non È Un Ostacolo</div>
+                <div class="case-study-duration">Lavoro iniziato a Giugno 2024</div>
+                <div class="case-study-content">
+                    <p><strong>LA SITUAZIONE INIZIALE</strong><br>Con un budget molto limitato, l'imprenditore pensava di non poter fare nulla. Non sapeva da dove iniziare con la pubblicità online.</p>
+                    <p style="margin-top: 15px;"><strong>COSA ABBIAMO FATTO</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Creato una strategia efficiente che non spreca soldi</li>
+                        <li>Usato i social in modo intelligente per raggiungere chi cerca il suo servizio</li>
+                        <li>Fatto crescere il business partendo da zero con strumenti semplici</li>
+                    </ul>
+                    <p style="margin-top: 15px;"><strong>IL RISULTATO</strong></p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>32 clienti nuovi al mese partendo da poco</li>
+                        <li>Clienti fedeli che rinnovano il servizio ogni mese</li>
+                        <li>Prova che con la strategia giusta il budget non è il problema</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING SECTION -->
+    <section class="pricing">
+        <div class="section-container">
+            <h2 class="pricing-title">Come Funziona La Collaborazione</h2>
+            <p class="pricing-subtitle">Fee fisso + commissione performance.</p>
+
+            <div class="pricing-card">
+                <div class="pricing-model">
+                    <h3 class="pricing-model-title">Modello di Pagamento</h3>
+                    <p><strong>FEE FISSO:</strong> €600/mese (dipende da settore, budget, obiettivi)</p>
+                    <p><strong>COMMISSIONE:</strong> 20% su risultati definiti</p>
+                    <p class="pricing-example">Nota: Questi sono valori di esempio. Il prezzo effettivo dipende dal tuo business e dai tuoi specifici obiettivi.</p>
+                </div>
+
+                <div class="guarantees">
+                    <h4>COME PROCEDIAMO</h4>
+                    <ul>
+                        <li>Ne parliamo se c'è compatibilità. Si può lavorare? Lo scopriamo insieme.</li>
+                        <li>Dashboard settimanale = trasparenza totale</li>
+                        <li>Call mensile = feedback honesto, non hype</li>
+                        <li>No long contract = via quando vuoi, 7 giorni</li>
+                        <li>Qualsiasi budget funziona = €300-3,000/mese</li>
+                    </ul>
+                </div>
+
+                <div class="included">
+                    <h4>COSA INCLUSO</h4>
+                    <ul>
+                        <li>Audit completo campagne attuali</li>
+                        <li>Setup audience micro-geo</li>
+                        <li>Optimization giornaliera 7gg/giorno</li>
+                        <li>Creative testing settimanale</li>
+                        <li>Bid strategy dinamica</li>
+                        <li>Reportistica settimanale</li>
+                        <li>Retargeting setup warm</li>
+                        <li>Call mensile strategica</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq">
+        <div class="faq-container">
+            <h2 class="section-title">Domande Frequenti</h2>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Quanto costa lavorare con te?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">Dipende dal tuo business e dai tuoi obiettivi. Durante la consulenza gratuita parleremo del tuo budget e di quanto sei disposto a investire. Non c'è un prezzo fisso dipende da te e da quello che vuoi fare.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Iniziamo subito oppure prima facciamo una prova?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">La consulenza è gratuita. Parliamo, capiamo se abbiamo sintonia e se penso veramente di poterti aiutare. Se sì, allora iniziamo a lavorare insieme. Se no, almeno non avrai perso tempo.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    In quanto tempo vedrò risultati?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">I primi dati escono già dalle prime settimane. I veri risultati però si vedono dopo 4-6 settimane, quando sappiamo cosa funziona e cosa no. Non prometto miracoli il primo giorno.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Che succede se la strategia non funziona?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">Lo scopriamo insieme dai dati. Se non funziona, cambiamo strategia. Non sto qui a cercare scuse se qualcosa non funziona, lo aggiustiamo. Semplice.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Posso smettere quando voglio?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">Sì. Niente contratti lunghi o impegnative. Se decidi che non funziona o che non è quello che cercavi, possiamo fermarci. Io voglio lavorare con persone che veramente credono nel progetto.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA SECTION -->
+    <section class="final-cta" id="final-cta">
+        <h2>Vediamo Come Possiamo Aiutare Il Tuo Business</h2>
+        <p>15 Minuti di Consulenza Gratuita.<br>Nessun Impegno. Parla Con Me.</p>
+        <button class="cta-button" onclick="window.location.href='https://wa.me/393923134623'">PRENOTA CONSULENZA GRATUITA</button>
+        <span class="cta-small">Clicca per contattare via WhatsApp - Lunedì-venerdì, 10-18 CET</span>
+        <div class="contact-info">
+            Email a <a href="mailto:malcolm.ibrhim@gmail.com">malcolm.ibrhim@gmail.com</a><br>
+            WhatsApp <a href="https://wa.me/393923134623">+39 392 3134623</a>
+        </div>
+        <p class="contact-text">Preferisci contattarmi direttamente? <br>Scrivimi su WhatsApp o email. Rispondo entro 2 ore.</p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>Malcolm Ibrhim</h4>
+                <p><strong>Media Buyer CPA Specialist Roma</strong></p>
+                <p>Specialized in local business acquisition. Small budget? Funziona. Prova i case study sopra.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#case-studies">Caso studio abbigliamento</a></li>
+                    <li><a href="#case-studies">Caso studio dentistico</a></li>
+                    <li><a href="#case-studies">Caso studio cinofilo</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#final-cta">Contatti</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            2026 Malcolm Ibrhim. All rights reserved. Privacy Policy • Terms of Service
+        </div>
+    </footer>
+
+    <script>
+        function toggleFaq(element) {
+            const answer = element.nextElementSibling;
+            const toggle = element.querySelector('.faq-toggle');
+            answer.classList.toggle('active');
+            toggle.textContent = answer.classList.contains('active') ? '−' : '+';
+        }
+
+        function scrollToFinal() {
+            document.getElementById('final-cta').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function scrollToContact() {
+            const contactInfo = document.querySelector('.contact-info');
+            contactInfo.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
