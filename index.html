@@ -1,963 +1,867 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Malcolm Ibrhim - Nuovi Clienti Per La Tua Attività a Roma</title>
-    <!-- Meta Pixel Code -->
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1230953368454129');
-    fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1230953368454129&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- End Meta Pixel Code -->
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Inter, Poppins, Montserrat, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: #fff;
-        }
-
-        /* HERO SECTION */
-        .hero {
-            background: linear-gradient(135deg, #0F2847 0%, #17A2B8 100%);
-            color: white;
-            padding: 100px 40px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .hero-text h1 {
-            font-size: 56px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            line-height: 1.2;
-            color: #fff;
-        }
-
-        .hero-text .subheadline {
-            font-size: 20px;
-            color: #E0E0E0;
-            margin-bottom: 20px;
-            font-weight: 400;
-        }
-
-        .hero-text .description {
-            font-size: 16px;
-            color: #fff;
-            margin-bottom: 40px;
-            line-height: 1.8;
-            max-width: 500px;
-        }
-
-        .cta-button {
-            background: #17A2B8;
-            color: white;
-            padding: 16px 32px;
-            font-size: 18px;
-            font-weight: 700;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: inline-block;
-            box-shadow: 0 8px 15px rgba(23, 162, 184, 0.4);
-        }
-
-        .cta-button:hover {
-            background: #138496;
-            transform: scale(1.08);
-            box-shadow: 0 12px 25px rgba(23, 162, 184, 0.6);
-        }
-
-        .cta-small {
-            display: block;
-            font-size: 13px;
-            color: #B0B0B0;
-            margin-top: 12px;
-        }
-
-        .hero-image {
-            text-align: center;
-        }
-
-        .hero-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 12px;
-        }
-
-        .infographic {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 40px;
-            border-radius: 12px;
-            text-align: center;
-        }
-
-        .infographic-item {
-            margin: 20px 0;
-        }
-
-        .before-cpa {
-            font-size: 18px;
-            color: #FF6B6B;
-            text-decoration: line-through;
-            margin-bottom: 15px;
-        }
-
-        .arrow-down {
-            font-size: 32px;
-            color: #17A2B8;
-            margin: 15px 0;
-        }
-
-        .after-cpa {
-            font-size: 36px;
-            font-weight: 700;
-            color: #4CAF50;
-            margin-bottom: 15px;
-        }
-
-        .reduction {
-            font-size: 18px;
-            font-weight: 700;
-            color: #4CAF50;
-        }
-
-        /* PAIN POINTS SECTION */
-        .pain-points {
-            background: #FFFFFF;
-            padding: 80px 40px;
-        }
-
-        .section-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 42px;
-            font-weight: 700;
-            color: #0F2847;
-            margin-bottom: 12px;
-            text-align: center;
-        }
-
-        .section-subtitle {
-            font-size: 18px;
-            color: #666;
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .card {
-            background: #FFFFFF;
-            border-left: 5px solid #17A2B8;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(23, 162, 184, 0.15);
-            transition: all 0.3s ease;
-        }
-
-        .card:hover {
-            box-shadow: 0 12px 25px rgba(23, 162, 184, 0.25);
-            transform: translateY(-8px);
-        }
-
-        .card-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-
-        .card h3 {
-            font-size: 20px;
-            font-weight: 700;
-            color: #0F2847;
-            margin-bottom: 15px;
-        }
-
-        .card p {
-            font-size: 15px;
-            color: #666;
-            line-height: 1.8;
-        }
-
-        .card.orange {
-            border-left-color: #17A2B8;
-        }
-
-        /* SOLUZIONE SECTION */
-        .solution {
-            background: #F8F9FA;
-            padding: 80px 40px;
-        }
-
-        .steps-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .step {
-            display: grid;
-            grid-template-columns: 120px 1fr;
-            gap: 40px;
-            margin-bottom: 60px;
-            align-items: flex-start;
-        }
-
-        .step-number {
-            font-size: 60px;
-            font-weight: 700;
-            color: #17A2B8;
-            text-align: center;
-            line-height: 1;
-        }
-
-        .step:nth-child(2) .step-number {
-            color: #0F2847;
-        }
-
-        .step:nth-child(3) .step-number {
-            color: #17A2B8;
-        }
-
-        .step-content h3 {
-            font-size: 20px;
-            font-weight: 700;
-            color: #0F2847;
-            margin-bottom: 15px;
-        }
-
-        .step-content p {
-            font-size: 16px;
-            color: #666;
-            line-height: 1.8;
-        }
-
-        .step-icon {
-            font-size: 40px;
-            margin-top: 10px;
-        }
-
-        /* CASE STUDIES SECTION */
-        .case-studies {
-            background: #FFFFFF;
-            padding: 80px 40px;
-        }
-
-        .case-study {
-            background: #F8F9FA;
-            border-left: 5px solid #17A2B8;
-            padding: 40px;
-            margin-bottom: 40px;
-            border-radius: 8px;
-            box-shadow: 0 8px 20px rgba(23, 162, 184, 0.15);
-        }
-
-        .case-study-header {
-            background: linear-gradient(135deg, #0F2847 0%, #17A2B8 100%);
-            color: white;
-            padding: 15px 20px;
-            border-radius: 6px;
-            margin: -40px -40px 30px -40px;
-            padding-left: 40px;
-            font-weight: 700;
-            font-size: 18px;
-        }
-
-        .case-study-metric {
-            font-size: 36px;
-            font-weight: 700;
-            color: #0F2847;
-            margin-bottom: 10px;
-        }
-
-        .case-study-secondary {
-            font-size: 20px;
-            font-weight: 700;
-            color: #0F2847;
-            margin-bottom: 8px;
-        }
-
-        .case-study-duration {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 30px;
-        }
-
-        .case-study-content {
-            font-size: 15px;
-            color: #333;
-            line-height: 1.8;
-        }
-
-        .case-study-content strong {
-            color: #0F2847;
-        }
-
-        /* PRICING SECTION */
-        .pricing {
-            background: linear-gradient(135deg, #1A1A2E 0%, #16213E 100%);
-            padding: 80px 40px;
-            color: white;
-        }
-
-        .pricing-title {
-            font-size: 42px;
-            font-weight: 700;
-            color: white;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .pricing-subtitle {
-            font-size: 18px;
-            color: white;
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .pricing-card {
-            background: white;
-            color: #333;
-            padding: 50px;
-            border-radius: 8px;
-            border: 2px solid #17A2B8;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .pricing-model {
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 30px;
-            margin-bottom: 30px;
-        }
-
-        .pricing-model-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: #0F2847;
-            margin-bottom: 15px;
-        }
-
-        .pricing-model p {
-            font-size: 15px;
-            color: #666;
-            margin-bottom: 10px;
-            line-height: 1.8;
-        }
-
-        .pricing-example {
-            font-size: 12px;
-            color: #999;
-            font-style: italic;
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px solid #eee;
-        }
-
-        .guarantees {
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 30px;
-            margin-bottom: 30px;
-        }
-
-        .guarantees h4 {
-            font-size: 16px;
-            font-weight: 700;
-            color: #0F2847;
-            margin-bottom: 15px;
-        }
-
-        .guarantees ul {
-            list-style: none;
-        }
-
-        .guarantees li {
-            font-size: 15px;
-            color: #333;
-            margin-bottom: 12px;
-            padding-left: 25px;
-            position: relative;
-        }
-
-        .guarantees li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-        }
-
-        .included {
-            padding-top: 20px;
-        }
-
-        .included h4 {
-            font-size: 16px;
-            font-weight: 700;
-            color: #0F2847;
-            margin-bottom: 15px;
-        }
-
-        .included ul {
-            list-style: none;
-        }
-
-        .included li {
-            font-size: 15px;
-            color: #333;
-            margin-bottom: 12px;
-            padding-left: 25px;
-            position: relative;
-        }
-
-        .included li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-            color: #17A2B8;
-        }
-
-        /* FAQ SECTION */
-        .faq {
-            background: #FFFFFF;
-            padding: 80px 40px;
-        }
-
-        .faq-container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            margin-bottom: 20px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .faq-question {
-            background: #F8F9FA;
-            padding: 20px;
-            cursor: pointer;
-            font-size: 18px;
-            font-weight: 700;
-            color: #0F2847;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.3s ease;
-            border-radius: 6px;
-            border-left: 4px solid transparent;
-        }
-
-        .faq-question:hover {
-            background: #E8F4F8;
-            border-left-color: #17A2B8;
-        }
-
-        .faq-toggle {
-            font-size: 24px;
-        }
-
-        .faq-answer {
-            display: none;
-            padding: 20px;
-            font-size: 15px;
-            color: #666;
-            line-height: 1.8;
-            background: #FFFFFF;
-        }
-
-        .faq-answer.active {
-            display: block;
-        }
-
-        /* FINAL CTA SECTION */
-        .final-cta {
-            background: linear-gradient(135deg, #0F2847 0%, #17A2B8 100%);
-            color: white;
-            padding: 100px 40px;
-            text-align: center;
-        }
-
-        .final-cta h2 {
-            font-size: 48px;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .final-cta p {
-            font-size: 20px;
-            margin-bottom: 40px;
-            color: #E0E0E0;
-        }
-
-        .contact-info {
-            font-size: 16px;
-            margin-top: 40px;
-            line-height: 2;
-        }
-
-        .contact-info a {
-            color: #fff;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
-
-        .contact-text {
-            font-size: 14px;
-            color: #B0B0B0;
-            margin-top: 30px;
-            font-style: italic;
-        }
-
-        /* FOOTER */
-        .footer {
-            background: #0F2847;
-            color: white;
-            padding: 60px 40px;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-col h4 {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .footer-col p {
-            font-size: 14px;
-            color: #B0B0B0;
-            line-height: 1.8;
-        }
-
-        .footer-col ul {
-            list-style: none;
-        }
-
-        .footer-col li {
-            margin-bottom: 12px;
-        }
-
-        .footer-col a {
-            color: #B0B0B0;
-            text-decoration: none;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-
-        .footer-col a:hover {
-            color: #17A2B8;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 30px;
-            text-align: center;
-            font-size: 12px;
-            color: #B0B0B0;
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .hero-text h1 {
-                font-size: 36px;
-            }
-
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .four-cards {
-                grid-template-columns: 1fr !important;
-            }
-
-            .step {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .step-number {
-                text-align: left;
-            }
-
-            .footer-container {
-                grid-template-columns: 1fr;
-            }
-
-            .hero {
-                padding: 60px 20px;
-            }
-
-            .pain-points,
-            .solution,
-            .case-studies,
-            .pricing,
-            .faq,
-            .final-cta {
-                padding: 60px 20px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Malcolm Ibrhim — Media Buyer, Roma</title>
+<meta name="description" content="Gestione pubblicità Meta e produzione video per attività di Roma. Fisso più percentuale sui clienti reali, non sui numeri che non pagano niente.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+  :root {
+    --bg: #0b0b0a;
+    --bg-panel: #141311;
+    --bg-panel-2: #191712;
+    --line: #2a2822;
+    --line-strong: #3d3a30;
+    --text: #edeae2;
+    --text-muted: #8c877c;
+    --text-faint: #5c584d;
+    --gold: #c9a227;
+    --gold-dim: #8a6f1d;
+    --gold-bright: #e0bb3f;
+
+    --font-display: 'Anton', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+
+    --max: 720px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(ellipse 900px 500px at 50% -10%, rgba(201,162,39,0.06), transparent 60%);
+  }
+
+  a { color: inherit; }
+
+  ::selection { background: var(--gold); color: #0b0b0a; }
+
+  :focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+
+  .wrap {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 22px;
+    height: 1px;
+    background: var(--gold-dim);
+  }
+
+  hr.rule {
+    border: none;
+    border-top: 1px solid var(--line);
+    max-width: var(--max);
+    margin: 0 auto;
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(11,11,10,0.88);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-mark {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .nav-mark b { color: var(--gold); font-weight: 600; }
+  .nav-link {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    color: var(--text-muted);
+    border: 1px solid var(--line-strong);
+    padding: 7px 14px;
+    transition: border-color .15s ease, color .15s ease;
+  }
+  .nav-link:hover { border-color: var(--gold); color: var(--gold-bright); }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    padding: 88px 0 64px;
+  }
+  .hero-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 22px;
+  }
+  .hero-eyebrow span { color: var(--gold); }
+
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: clamp(34px, 6.6vw, 58px);
+    line-height: 1.04;
+    letter-spacing: 0.005em;
+    opacity: 0;
+    transform: translateY(6px);
+    animation: hardIn .38s cubic-bezier(.2,.9,.15,1) forwards;
+    animation-delay: .08s;
+  }
+  h1 .accent { color: var(--gold); }
+
+  @keyframes hardIn {
+    0%   { opacity: 0; transform: translateY(10px); }
+    60%  { opacity: 1; }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-sub {
+    margin-top: 22px;
+    max-width: 52ch;
+    font-size: 17px;
+    color: var(--text-muted);
+    opacity: 0;
+    animation: fadeUp .4s ease forwards;
+    animation-delay: .3s;
+  }
+  @keyframes fadeUp {
+    from { opacity:0; transform: translateY(6px); }
+    to   { opacity:1; transform: translateY(0); }
+  }
+
+  .hero-cta {
+    margin-top: 34px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    color: var(--bg);
+    background: var(--gold);
+    padding: 13px 22px;
+    transition: background .15s ease;
+    opacity: 0;
+    animation: fadeUp .4s ease forwards;
+    animation-delay: .42s;
+  }
+  .hero-cta:hover { background: var(--gold-bright); }
+
+  /* ---------- SECTION GENERIC ---------- */
+  section { padding: 72px 0; }
+
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: clamp(24px, 4vw, 32px);
+    line-height: 1.12;
+    max-width: 20ch;
+  }
+
+  .section-lede {
+    margin-top: 16px;
+    color: var(--text-muted);
+    max-width: 56ch;
+    font-size: 15.5px;
+  }
+
+  /* ---------- PROBLEMA (3 livelli) ---------- */
+  .livello {
+    display: grid;
+    grid-template-columns: 46px 1fr;
+    gap: 0 20px;
+    padding: 28px 0;
+    border-top: 1px solid var(--line);
+  }
+  .livello:last-child { border-bottom: 1px solid var(--line); }
+  .livello-num {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--gold);
+    padding-top: 3px;
+  }
+  .livello h3 {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 17px;
+    margin-bottom: 8px;
+  }
+  .livello p {
+    color: var(--text-muted);
+    font-size: 15px;
+    max-width: 54ch;
+  }
+
+  /* ---------- CONTRATTO ---------- */
+  .clausola {
+    padding: 22px 0;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .clausola:last-child { border-bottom: 1px solid var(--line); }
+  .clausola-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .clausola-title {
+    font-weight: 600;
+    font-size: 16px;
+  }
+  .clausola-tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-faint);
+    white-space: nowrap;
+    letter-spacing: 0.04em;
+  }
+  .clausola p {
+    color: var(--text-muted);
+    font-size: 15px;
+    max-width: 56ch;
+  }
+
+  /* ---------- CASE STUDY / SCONTRINO ---------- */
+  .case {
+    margin-top: 40px;
+  }
+  .case-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+    margin-bottom: 10px;
+  }
+  .case-label b { color: var(--text); font-weight: 500; }
+
+  .receipt {
+    background: var(--bg-panel);
+    border: 1px solid var(--line-strong);
+    padding: 26px 24px 20px;
+    position: relative;
+    font-family: var(--font-mono);
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity .5s ease, transform .5s cubic-bezier(.2,.7,.2,1);
+  }
+  .receipt.in-view { opacity: 1; transform: translateY(0); }
+
+  .receipt::before, .receipt::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    height: 10px;
+    background-image: radial-gradient(circle at 6px 5px, var(--bg) 5px, transparent 5.5px);
+    background-size: 14px 10px;
+    background-repeat: repeat-x;
+  }
+  .receipt::before { top: -5px; }
+  .receipt::after { bottom: -5px; transform: rotate(180deg); }
+
+  .receipt-title {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+  }
+  .receipt-sub {
+    font-size: 11.5px;
+    color: var(--text-faint);
+    margin-top: 4px;
+    margin-bottom: 18px;
+  }
+
+  .receipt-line {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-muted);
+    padding: 6px 0;
+  }
+  .receipt-line .k { white-space: nowrap; }
+  .receipt-line .fill {
+    flex: 1;
+    border-bottom: 1px dotted var(--line-strong);
+    transform: translateY(-3px);
+  }
+  .receipt-line .v {
+    white-space: nowrap;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .receipt-div {
+    border-top: 1px dashed var(--line-strong);
+    margin: 12px 0;
+  }
+
+  .receipt-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 4px 0;
+    font-size: 14px;
+  }
+  .receipt-total .k { color: var(--text); font-weight: 600; }
+  .receipt-total .v { color: var(--gold-bright); font-weight: 700; font-size: 15px; }
+
+  .receipt-total.hero-num .v { font-size: 22px; }
+
+  .receipt-note {
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+    font-family: var(--font-body);
+    font-size: 12.5px;
+    font-style: italic;
+    color: var(--text-faint);
+    line-height: 1.5;
+  }
+
+  /* ---------- MID CTA ---------- */
+  .mid-cta {
+    margin-top: 44px;
+    padding-top: 24px;
+    border-top: 1px dashed var(--line);
+    font-size: 14.5px;
+    color: var(--text-muted);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 6px 10px;
+  }
+  .mid-cta-link {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold-dim);
+  }
+  .mid-cta-link:hover { color: var(--gold-bright); border-color: var(--gold-bright); }
+
+  /* ---------- PER CHI È / NON È ---------- */
+  .fit-grid {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+  .fit-col { padding: 24px 0; }
+  .fit-col:first-child { padding-right: 24px; border-right: 1px solid var(--line); }
+  .fit-col:last-child { padding-left: 24px; }
+  .fit-head {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .fit-head-yes { color: var(--gold-bright); }
+  .fit-head-no { color: var(--text-faint); }
+  .fit-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .fit-list li {
+    font-size: 14px;
+    color: var(--text-muted);
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.45;
+  }
+  .fit-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--text-faint);
+  }
+  .fit-col:first-child .fit-list li::before { color: var(--gold-dim); }
+
+  @media (max-width: 600px) {
+    .fit-grid { grid-template-columns: 1fr; }
+    .fit-col:first-child { padding-right: 0; border-right: none; border-bottom: 1px solid var(--line); padding-bottom: 24px; margin-bottom: 24px; }
+    .fit-col:last-child { padding-left: 0; }
+  }
+
+  /* ---------- CHI SONO ---------- */
+  .chi {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .chi p {
+    color: var(--text-muted);
+    font-size: 15.5px;
+    max-width: 58ch;
+  }
+  .chi p + p { margin-top: 4px; }
+  .chi strong { color: var(--text); font-weight: 600; }
+
+  /* ---------- CTA FINALE ---------- */
+  .final {
+    padding: 88px 0 96px;
+    text-align: left;
+  }
+  .final h2 { max-width: 16ch; }
+  .final .section-lede { margin-bottom: 30px; }
+
+  .final-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    color: var(--bg);
+    background: var(--gold);
+    padding: 15px 26px;
+    transition: background .15s ease;
+  }
+  .final-cta:hover { background: var(--gold-bright); }
+
+  .final-note {
+    margin-top: 16px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-faint);
+  }
+
+  .contact-split {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 44px;
+    border-top: 1px solid var(--line);
+    padding-top: 32px;
+  }
+  .contact-col-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 16px;
+  }
+
+  .contact-form { display: flex; flex-direction: column; gap: 14px; max-width: 340px; }
+  .cf-row { display: flex; flex-direction: column; gap: 6px; }
+  .cf-row label {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+  }
+  .cf-row input, .cf-row textarea {
+    background: var(--bg-panel);
+    border: 1px solid var(--line-strong);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 14px;
+    padding: 10px 12px;
+    resize: vertical;
+  }
+  .cf-row input:focus, .cf-row textarea:focus {
+    outline: none;
+    border-color: var(--gold-dim);
+  }
+  .cf-submit {
+    align-self: flex-start;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    color: var(--bg);
+    background: var(--gold);
+    border: none;
+    padding: 11px 20px;
+    cursor: pointer;
+    transition: background .15s ease;
+  }
+  .cf-submit:hover { background: var(--gold-bright); }
+  .cf-submit:disabled { opacity: 0.6; cursor: default; }
+
+  .cf-status {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-faint);
+    min-height: 16px;
+  }
+  .cf-status.ok { color: var(--gold-bright); }
+  .cf-status.err { color: #c96b27; }
+
+  @media (max-width: 600px) {
+    .contact-split { grid-template-columns: 1fr; gap: 32px; }
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 28px 0 40px;
+  }
+  .foot-inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-faint);
+    letter-spacing: 0.02em;
+  }
+  .foot-inner a { text-decoration: none; color: var(--text-faint); }
+  .foot-inner a:hover { color: var(--gold); }
+
+  @media (prefers-reduced-motion: reduce) {
+    h1, .hero-sub, .hero-cta, .receipt { animation: none !important; transition: none !important; opacity: 1 !important; transform: none !important; }
+  }
+
+  @media (max-width: 600px) {
+    .livello { grid-template-columns: 30px 1fr; }
+    .clausola-head { flex-direction: column; gap: 2px; }
+  }
+</style>
 </head>
 <body>
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <div class="hero-container">
-            <div class="hero-text">
-                <h1>Guadagno Solo Quando<br>Porto Clienti Reali.</h1>
-                <p class="subheadline">L'unico a Roma che lavora così.<br>Nessuna agenzia ti farà questa proposta.</p>
-                <p class="description">Sono Malcolm Ibrhim. Intercetto persone nella tua zona che stanno già cercando quello che offri e le porto a contattarti direttamente — appuntamenti, prenotazioni, richieste. Il modello è semplice: una quota fissa che copre il lavoro operativo, più una commissione solo sui risultati concordati. Se non arrivano clienti, non prendo la commissione.</p>
-                <button class="cta-button" onclick="scrollToFinal()">PARLIAMONE — È GRATIS</button>
-                <span class="cta-small">In 15 minuti ti dico quante persone nella tua zona stanno già cercando quello che offri</span>
-            </div>
-            <div class="hero-image">
-                <img src="hero.png" alt="Malcolm Ibrhim" style="max-width: 100%; border-radius: 12px; margin-bottom: 30px;">
-                <div class="infographic">
-                    <div class="infographic-item">
-                        <div class="after-cpa" style="color: #FFD700; font-size: 22px;">Quota fissa + commissione sui risultati</div>
-                        <div class="reduction" style="color: #FFFFFF; font-size: 15px; margin-top: 10px;">Commissione solo sui clienti reali.<br>Se non arrivano, non la prendo.</div>
-                    </div>
-                </div>
-            </div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <span class="nav-mark">MALCOLM IBRHIM <b>— MM</b></span>
+    <a href="https://wa.me/393923134623?text=Ciao%20Malcolm%2C%20ho%20visto%20il%20sito.%20Voglio%20sapere%20quanto%20mi%20costa%20un%20cliente%20dalla%20pubblicit%C3%A0." target="_blank" rel="noopener" class="nav-link">Scrivimi</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-eyebrow">Media buyer <span>&</span> produzione video — Roma</div>
+      <h1>Chi gestisce i tuoi<br>annunci incassa<br><span class="accent">anche se tu perdi</span><br>soldi.</h1>
+      <p class="hero-sub">Io no. Fisso per il lavoro operativo, percentuale solo sopra una soglia di clienti veri — concordata prima di iniziare, non decisa a fine mese da me.</p>
+      <a href="#contatto" class="hero-cta">Scrivimi →</a>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- IL PROBLEMA -->
+  <section id="problema">
+    <div class="wrap">
+      <div class="eyebrow">Il problema, in tre livelli</div>
+      <h2>Non è un problema di pubblicità. È un problema di chi la gestisce.</h2>
+      <p class="section-lede">Sono tre livelli, uno dentro l'altro. Il primo si vede nei numeri della campagna. Il secondo si vede nel contratto di chi te la gestisce. Il terzo lo senti la sera, quando controlli il conto — ed è quello vero.</p>
+
+      <div>
+        <div class="livello">
+          <div class="livello-num">01</div>
+          <div>
+            <h3>Spendi e non sai se torna indietro</h3>
+            <p>Le grafiche del resoconto sono verdi, le visualizzazioni salgono. Ma non stai misurando quanto ti costa un cliente — stai guardando numeri che non pagano l'affitto.</p>
+          </div>
         </div>
-    </section>
-
-    <!-- PAIN POINTS SECTION -->
-    <section class="pain-points">
-        <div class="section-container">
-            <h2 class="section-title">Riconosci Una Di Queste Situazioni?</h2>
-            <p class="section-subtitle">Che tu abbia già provato o stia partendo da zero, il problema è sempre lo stesso: clienti nuovi che non arrivano in modo prevedibile.</p>
-            <div class="cards-grid four-cards" style="grid-template-columns: repeat(2, 1fr);">
-                <div class="card">
-                    <div class="card-icon">🌱</div>
-                    <h3>Non Hai Mai Fatto Pubblicità</h3>
-                    <p>Vai avanti col passaparola e funziona, ma non puoi controllarlo. Certi mesi sono pieni, altri no — e non sai mai perché né come cambiarlo.</p>
-                </div>
-                <div class="card orange">
-                    <div class="card-icon">💸</div>
-                    <h3>Il Tasto "Promuovi"</h3>
-                    <p>Hai schiacciato il pulsante suggerito da Instagram o Facebook. Hai visto le visualizzazioni salire. Poi hai guardato la cassa e non era cambiato niente.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🏢</div>
-                    <h3>L'Agenzia Che Incassa Sempre</h3>
-                    <p>Hai pagato una quota fissa ogni mese. Ti hanno mandato report pieni di grafici. I clienti nuovi non arrivavano — ma la fattura sì, puntuale.</p>
-                </div>
-                <div class="card orange">
-                    <div class="card-icon">🎯</div>
-                    <h3>Campagne Generiche</h3>
-                    <p>Hanno fatto girare pubblicità a tutta Roma. Impressioni, clic, traffico. Niente appuntamenti, niente prenotazioni, niente di concreto.</p>
-                </div>
-            </div>
+        <div class="livello">
+          <div class="livello-num">02</div>
+          <div>
+            <h3>Chi te la gestisce guadagna uguale</h3>
+            <p>Un'agenzia a forfait prende lo stesso compenso se funziona o se non funziona. Non ha nessun motivo strutturale per far tornare i tuoi soldi — solo per tenerti come cliente.</p>
+          </div>
         </div>
-    </section>
-
-    <!-- REASON WHY SECTION -->
-    <section style="background: #0F2847; padding: 80px 40px; color: white;">
-        <div class="section-container" style="max-width: 800px; text-align: center;">
-            <h2 style="font-size: 36px; font-weight: 700; color: #FFD700; margin-bottom: 20px;">Perché Il Mio Modello È Diverso</h2>
-            <p style="font-size: 20px; color: #E0E0E0; line-height: 1.8; margin-bottom: 30px;">Che tu parta da zero o abbia già bruciato soldi in pubblicità, il problema è lo stesso: non puoi pagare per qualcosa senza sapere cosa ottieni in cambio. Un'agenzia prende la quota fissa anche se non porta niente. Io prendo la commissione solo sui risultati concordati — appuntamenti reali, prenotazioni reali, clienti reali.</p>
-            <p style="font-size: 18px; color: #17A2B8; font-weight: 700; margin-bottom: 30px;">Questo significa una cosa sola: se tu non guadagni, non guadagno neanche io.</p>
-            <p style="font-size: 16px; color: #B0B0B0; line-height: 1.8;">Non ho incentivo a mandarti report pieni di numeri inutili. Ho incentivo a portarti clienti veri — perché è l'unico modo in cui vengo pagato per quello che conta davvero.</p>
+        <div class="livello">
+          <div class="livello-num">03</div>
+          <div>
+            <h3>Non sai a chi chiedere conto</h3>
+            <p>Non è che vuoi più clienti a tutti i costi. È che ti senti in balia di qualcosa che non controlli, e nessuno ti deve una risposta quando i numeri non tornano.</p>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- SOLUZIONE SECTION -->
-    <section class="solution">
-        <div class="steps-container">
-            <h2 class="section-title">Come Funziona</h2>
-            <p class="section-subtitle">Tre passi per portare clienti nuovi ogni mese</p>
+  <hr class="rule">
 
-            <div class="step">
-                <div class="step-number">1</div>
-                <div class="step-content">
-                    <h3>Capisco Il Tuo Business</h3>
-                    <p>In 15 minuti di chiamata gratuita guardo la tua attività, la tua zona, e quante persone stanno già cercando quello che offri. Se vedo potenziale te lo dico subito — se non lo vedo, te lo dico lo stesso.</p>
-                </div>
-            </div>
+  <!-- PER CHI È / PER CHI NON È -->
+  <section id="target">
+    <div class="wrap">
+      <div class="eyebrow">Prima di andare avanti</div>
+      <h2>Per chi è, e per chi non è.</h2>
+      <p class="section-lede">Non lavoro bene con tutti, e preferisco dirtelo prima che farti perdere tempo dopo.</p>
 
-            <div class="step">
-                <div class="step-number">2</div>
-                <div class="step-content">
-                    <h3>Intercetto Chi Sta Già Cercando</h3>
-                    <p>Non mostro la tua attività a tutta Roma. La mostro alle persone nella tua zona che stanno già cercando quello che offri — chi cerca un centro estetico a Prati, chi cerca un dentista a Bufalotta. Preciso, non generico.</p>
-                </div>
-            </div>
-
-            <div class="step">
-                <div class="step-number">3</div>
-                <div class="step-content">
-                    <h3>Misuro Solo Quello Che Conta</h3>
-                    <p>Non ti mando grafici di impressioni e clic. Ti dico quanti appuntamenti sono arrivati, quante prenotazioni, quante richieste di contatto. Ogni settimana. In linguaggio semplice.</p>
-                </div>
-            </div>
+      <div class="fit-grid">
+        <div class="fit-col">
+          <div class="fit-head fit-head-yes">Ha senso se</div>
+          <ul class="fit-list">
+            <li>Spendi già in pubblicità e non sai quanto ti costa davvero un cliente</li>
+            <li>Il tuo servizio ha un valore per cliente che giustifica una campagna gestita seriamente</li>
+            <li>Vuoi un numero da controllare, non una relazione mensile piena di aggettivi</li>
+            <li>Sei disposto a definire prima cosa conta come risultato, non a deciderlo strada facendo</li>
+          </ul>
         </div>
-    </section>
-
-    <!-- CASE STUDIES SECTION -->
-    <section class="case-studies">
-        <div class="section-container">
-            <h2 class="section-title">Ho Aiutato Diversi Business A Crescere</h2>
-            <p class="section-subtitle">Storie reali di imprenditori che hanno visto risultati concreti</p>
-
-            <div class="case-study">
-                <div class="case-study-header">NEGOZIO ABBIGLIAMENTO - BOCCEA</div>
-                <div class="case-study-metric">Nuovi Clienti In Zona Ogni Mese</div>
-                <div class="case-study-secondary">Con Un Aumento Costante Delle Vendite</div>
-                <div class="case-study-duration">Roma, 2024</div>
-                <div class="case-study-content">
-                    <p><strong>LA SITUAZIONE INIZIALE</strong><br>Il proprietario investiva in pubblicità ma vedeva solo visualizzazioni. Pochi clienti reali, niente di misurabile.</p>
-                    <p style="margin-top: 15px;"><strong>COSA ABBIAMO FATTO</strong></p>
-                    <ul style="margin-left: 20px; margin-top: 10px;">
-                        <li>Identificato il cliente ideale nella zona specifica del negozio</li>
-                        <li>Costruito messaggi che parlano a chi abita o lavora in zona</li>
-                        <li>Portato persone dentro al negozio, non solo clic</li>
-                    </ul>
-                    <p style="margin-top: 15px;"><strong>IL RISULTATO</strong></p>
-                    <ul style="margin-left: 20px; margin-top: 10px;">
-                        <li>Flusso costante di nuovi clienti ogni mese</li>
-                        <li>Aumento delle vendite misurabile mese su mese</li>
-                        <li>Clienti che tornano perché soddisfatti</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="case-study">
-                <div class="case-study-header">STUDIO DENTISTICO - BUFALOTTA</div>
-                <div class="case-study-metric">Più Appuntamenti Nuovi Ogni Mese</div>
-                <div class="case-study-secondary">Con Un Flusso Stabile E Prevedibile</div>
-                <div class="case-study-duration">Roma, 2024</div>
-                <div class="case-study-content">
-                    <p><strong>LA SITUAZIONE INIZIALE</strong><br>Lo studio faticava ad attrarre pazienti nuovi. La pubblicità precedente non aveva portato risultati concreti.</p>
-                    <p style="margin-top: 15px;"><strong>COSA ABBIAMO FATTO</strong></p>
-                    <ul style="margin-left: 20px; margin-top: 10px;">
-                        <li>Identificato chi nella zona stava cercando un dentista</li>
-                        <li>Costruito messaggi che mostrano il valore dello studio in modo autentico</li>
-                        <li>Creato un flusso continuativo di richieste qualificate</li>
-                    </ul>
-                    <p style="margin-top: 15px;"><strong>IL RISULTATO</strong></p>
-                    <ul style="margin-left: 20px; margin-top: 10px;">
-                        <li>Aumento significativo degli appuntamenti nuovi ogni mese</li>
-                        <li>Alta percentuale di contatti che si trasformano in pazienti</li>
-                        <li>Prenotazioni stabili e prevedibili</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="case-study">
-                <div class="case-study-header">ADDESTRAMENTO CINOFILO - ROMA</div>
-                <div class="case-study-metric">Nuovi Iscritti Ogni Mese Con Budget Contenuto</div>
-                <div class="case-study-secondary">La Prova Che Non Serve Un Grande Budget Per Iniziare</div>
-                <div class="case-study-duration">Roma, 2024</div>
-                <div class="case-study-content">
-                    <p><strong>LA SITUAZIONE INIZIALE</strong><br>Il centro dipendeva quasi completamente dal passaparola. Nessuna strategia di acquisizione clienti, nessun modo per prevedere il flusso.</p>
-                    <p style="margin-top: 15px;"><strong>COSA ABBIAMO FATTO</strong></p>
-                    <ul style="margin-left: 20px; margin-top: 10px;">
-                        <li>Costruito una strategia che non spreca budget</li>
-                        <li>Intercettato proprietari di cani nella zona che cercavano già un centro</li>
-                        <li>Portato richieste dirette ogni mese, senza dipendere dal passaparola</li>
-                    </ul>
-                    <p style="margin-top: 15px;"><strong>IL RISULTATO</strong></p>
-                    <ul style="margin-left: 20px; margin-top: 10px;">
-                        <li>Flusso costante di nuovi clienti ogni mese</li>
-                        <li>Clienti che rinnovano il percorso</li>
-                        <li>Crescita reale partendo da un budget piccolo</li>
-                    </ul>
-                </div>
-            </div>
+        <div class="fit-col">
+          <div class="fit-head fit-head-no">Non ha senso se</div>
+          <ul class="fit-list">
+            <li>Cerchi il prezzo più basso possibile, non il costo per cliente più basso possibile</li>
+            <li>Vuoi solo "più visibilità", senza legarla a un numero di clienti concreto</li>
+            <li>Non hai mai speso un euro in pubblicità e vuoi partire da zero senza dati</li>
+            <li>Ti aspetti risultati garantiti nella prima settimana</li>
+          </ul>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- PRICING SECTION -->
-    <section class="pricing">
-        <div class="section-container">
-            <h2 class="pricing-title">Il Modello A Performance</h2>
-            <p class="pricing-subtitle">L'unico modo in cui ha senso pagare per avere clienti nuovi.</p>
+  <hr class="rule">
 
-            <div class="pricing-card">
-                <div class="pricing-model">
-                    <h3 class="pricing-model-title">Come Funziona Il Pagamento</h3>
-                    <p><strong>QUOTA FISSA:</strong> copre il lavoro operativo — setup, gestione, ottimizzazione quotidiana</p>
-                    <p><strong>COMMISSIONE:</strong> solo sui risultati concordati prima di iniziare — appuntamenti, prenotazioni, contatti qualificati</p>
-                    <p class="pricing-example">I valori esatti dipendono dal settore, dalla zona e dagli obiettivi. Li definiamo insieme nella call gratuita.</p>
-                </div>
+  <!-- CASE STUDY -->
+  <section id="numeri">
+    <div class="wrap">
+      <div class="eyebrow">I numeri, non le promesse</div>
+      <h2>Due campagne vere. Settore anonimizzato, numeri no.</h2>
+      <p class="section-lede">Nessun nome — è il patto con chi mi paga ogni mese. Ma il costo per cliente e il ritorno sono quelli reali, presi dai resoconti delle campagne.</p>
 
-                <div class="guarantees">
-                    <h4>PERCHÉ QUESTO MODELLO FUNZIONA</h4>
-                    <ul>
-                        <li>Definisco io i risultati attesi prima di iniziare — non dopo</li>
-                        <li>Se non arrivano clienti, non prendo la commissione</li>
-                        <li>Puoi smettere con 7 giorni di preavviso — nessun contratto lungo</li>
-                        <li>Report settimanale su appuntamenti e prenotazioni reali — non su clic o impression</li>
-                        <li>Call mensile per fare il punto — quello che funziona si scala, quello che non funziona si cambia</li>
-                    </ul>
-                </div>
+      <div class="case">
+        <div class="case-label">Caso 1 — <b>scuola di formazione professionale</b>, ciclo lungo, ticket alto</div>
+        <div class="receipt">
+          <div class="receipt-title">Relaunch — 20 maggio / 1 luglio</div>
+          <div class="receipt-sub">campagna in corso, dati aggiornati al periodo indicato</div>
 
-                <div class="included">
-                    <h4>COSA INCLUSO</h4>
-                    <ul>
-                        <li>Analisi della tua zona e del tuo cliente ideale</li>
-                        <li>Strategia costruita su misura — non un template generico</li>
-                        <li>Monitoraggio quotidiano — niente budget sprecato</li>
-                        <li>Test continui per trovare cosa converte meglio</li>
-                        <li>Report settimanale in linguaggio semplice</li>
-                        <li>Retargeting su chi ha già mostrato interesse</li>
-                        <li>Call mensile strategica</li>
-                    </ul>
-                </div>
-            </div>
+          <div class="receipt-line"><span class="k">Richieste ricevute</span><span class="fill"></span><span class="v">182</span></div>
+          <div class="receipt-line"><span class="k">Costo per richiesta</span><span class="fill"></span><span class="v">€ 3,01</span></div>
+          <div class="receipt-line"><span class="k">Appuntamenti fissati</span><span class="fill"></span><span class="v">30</span></div>
+          <div class="receipt-line"><span class="k">Costo per appuntamento</span><span class="fill"></span><span class="v">€ 18,27</span></div>
+          <div class="receipt-line"><span class="k">Persone diventate clienti</span><span class="fill"></span><span class="v">6</span></div>
+          <div class="receipt-line"><span class="k">Costo per cliente</span><span class="fill"></span><span class="v">€ 91,36</span></div>
+
+          <div class="receipt-div"></div>
+
+          <div class="receipt-total"><span class="k">Incassato dai 6 clienti</span><span class="v">€ 15.000</span></div>
+          <div class="receipt-total hero-num"><span class="k">Torna per ogni euro speso</span><span class="v">27€</span></div>
+
+          <div class="receipt-note">Nota: numeri della campagna in corso nel periodo indicato, non di tutto lo storico del cliente. Settore reso generico per accordo con chi mi paga ogni mese — i numeri no.</div>
         </div>
-    </section>
+      </div>
 
-    <!-- FAQ SECTION -->
-    <section class="faq">
-        <div class="faq-container">
-            <h2 class="section-title">Domande Frequenti</h2>
+      <div class="case" style="margin-top:52px;">
+        <div class="case-label">Caso 2 — <b>studio odontoiatrico</b>, servizi premium</div>
+        <div class="receipt">
+          <div class="receipt-title">Prima campagna, budget contenuto</div>
+          <div class="receipt-sub">modulo contatti diretto, nessuna landing esterna</div>
 
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    Quanto costa lavorare con te?
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">Dipende dal tuo business e dai tuoi obiettivi. Durante la consulenza gratuita parleremo del tuo budget e di quanto sei disposto a investire. Non c'è un prezzo fisso, dipende da te e da quello che vuoi fare.</div>
-            </div>
+          <div class="receipt-line"><span class="k">Richieste ricevute</span><span class="fill"></span><span class="v">8</span></div>
+          <div class="receipt-line"><span class="k">Costo per richiesta</span><span class="fill"></span><span class="v">€ 24,31</span></div>
+          <div class="receipt-line"><span class="k">Persone diventate clienti</span><span class="fill"></span><span class="v">2</span></div>
+          <div class="receipt-line"><span class="k">Costo per cliente</span><span class="fill"></span><span class="v">€ 97,23</span></div>
 
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    Iniziamo subito oppure prima facciamo una prova?
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">La consulenza è gratuita. Parliamo, capiamo se abbiamo sintonia e se penso veramente di poterti aiutare. Se sì, allora iniziamo a lavorare insieme. Se no, almeno non avrai perso tempo.</div>
-            </div>
+          <div class="receipt-div"></div>
 
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    In quanto tempo vedrò risultati?
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">I primi dati escono già dalle prime settimane. I veri risultati però si vedono dopo 4-6 settimane, quando sappiamo cosa funziona e cosa no. Non prometto miracoli il primo giorno.</div>
-            </div>
+          <div class="receipt-total"><span class="k">Incassato dai 2 clienti</span><span class="v">€ 16.000</span></div>
+          <div class="receipt-total hero-num"><span class="k">Torna per ogni euro speso</span><span class="v">82€</span></div>
 
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    Che succede se la strategia non funziona?
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">Lo scopriamo insieme dai dati. Se non funziona, cambiamo strategia. Non sto qui a cercare scuse se qualcosa non funziona, lo aggiustiamo. Semplice.</div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    Posso smettere quando voglio?
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">Sì. Niente contratti lunghi o impegnativi. Se decidi che non funziona o che non è quello che cercavi, puoi fermarti. Voglio lavorare con chi crede davvero nel progetto.</div>
-            </div>
+          <div class="receipt-note">Nota: campione piccolo — 2 clienti su 8 richieste. Il numero è vero, non è ancora una statistica solida. Lo mostro comunque perché è quello che è successo davvero, con un budget contenuto.</div>
         </div>
-    </section>
+      </div>
 
-    <!-- FINAL CTA SECTION -->
-    <section class="final-cta" id="final-cta">
-        <h2>In 15 Minuti Ti Dico Se Posso Portarti Clienti</h2>
-        <p>Guardo la tua attività e la tua zona.<br>Ti dico quante persone stanno già cercando quello che offri e cosa farei concretamente.<br>Se non vedo potenziale, te lo dico subito — e non hai perso niente.</p>
-        <button class="cta-button" onclick="window.location.href='https://wa.me/393923134623'">PARLIAMONE GRATIS</button>
-        <span class="cta-small">WhatsApp — Lunedì-venerdì, 10-18</span>
-        <div class="contact-info">
-            Email: <a href="mailto:malcolm.ibrhim@gmail.com">malcolm.ibrhim@gmail.com</a><br>
-            WhatsApp: <a href="https://wa.me/393923134623">+39 392 3134623</a>
+      <div class="mid-cta">
+        <span>Se vuoi lo stesso scontrino con i tuoi numeri dentro —</span>
+        <a href="https://wa.me/393923134623?text=Ciao%20Malcolm%2C%20ho%20visto%20il%20sito.%20Voglio%20sapere%20quanto%20mi%20costa%20un%20cliente%20dalla%20pubblicit%C3%A0." target="_blank" rel="noopener" class="mid-cta-link">scrivimi su WhatsApp →</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- COME FUNZIONA -->
+  <section id="contratto">
+    <div class="wrap">
+      <div class="eyebrow">Il contratto, non la promessa</div>
+      <h2>Ora che hai visto i numeri, ecco come sono arrivati.</h2>
+      <p class="section-lede">Tre clausole. Nessuna delle tre è negoziabile a parole — sono scritte.</p>
+
+      <div>
+        <div class="clausola">
+          <div class="clausola-head">
+            <div class="clausola-title">Fisso mensile</div>
+            <div class="clausola-tag">COPRE IL LAVORO</div>
+          </div>
+          <p>Gestione, ottimizzazione, resoconti — dichiarati prima, per iscritto, con il perimetro esatto di cosa include. Nessuna sorpresa a metà mese.</p>
         </div>
-    </section>
+        <div class="clausola">
+          <div class="clausola-head">
+            <div class="clausola-title">Percentuale sui risultati</div>
+            <div class="clausola-tag">SOPRA UNA SOGLIA</div>
+          </div>
+          <p>Si attiva solo oltre un numero di clienti concordato prima di iniziare — non su qualsiasi richiesta. Se guadagno di più, è perché tu hai guadagnato prima.</p>
+        </div>
+        <div class="clausola">
+          <div class="clausola-head">
+            <div class="clausola-title">Uscita in 60 giorni</div>
+            <div class="clausola-tag">SENZA PENALI</div>
+          </div>
+          <p>Se i numeri concordati non arrivano entro 60 giorni, il secondo mese di fisso non lo paghi. Te ne vai. La perdita massima è definita da subito, non illimitata nel tempo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-col">
-                <h4>Malcolm Ibrhim</h4>
-                <p>Libero professionista — Roma</p>
-                <p style="margin-top: 10px;">P.IVA 17193111006<br>Sede legale: Via del Podere Fiume 6, Roma</p>
-                <p style="margin-top: 10px;">Aiuto attività locali a Roma a trovare clienti nuovi ogni mese.</p>
+  <hr class="rule">
+
+  <!-- CHI SONO -->
+  <section id="chi-sono">
+    <div class="wrap">
+      <div class="eyebrow">Chi gestisce i tuoi annunci</div>
+      <h2>Malcolm Ibrhim. Media buyer e chi fa i video — non due persone diverse.</h2>
+      <div class="chi" style="margin-top:20px;">
+        <p>Lavoro a Roma, per attività di Roma. Non gestisco pubblicità per una zona che non ho mai visto — conosco le categorie merceologiche, il tessuto economico, chi compra cosa in quale quartiere.</p>
+        <p>Riprendo, monto e scrivo i testi io. Non passo le tue campagne a un altro tavolo dopo la prima chiamata.</p>
+        <p><strong>Partita IVA regime forfettario</strong> — tutto verificabile, contratto scritto, nessuna cifra detta a voce e dimenticata dopo.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- CTA FINALE -->
+  <section class="final" id="contatto">
+    <div class="wrap">
+      <div class="eyebrow">Il prossimo passo</div>
+      <h2>Non ti serve un'altra promessa. Ti serve sapere quanto ti costa un cliente.</h2>
+      <p class="section-lede">Quindici minuti, senza impegno. Guardo le tue campagne attive e ti dico cosa vedo — in numeri, non in aggettivi.</p>
+
+      <div class="contact-split">
+        <div class="contact-col">
+          <div class="contact-col-label">Diretto</div>
+          <a href="https://wa.me/393923134623?text=Ciao%20Malcolm%2C%20ho%20visto%20il%20sito.%20Voglio%20sapere%20quanto%20mi%20costa%20un%20cliente%20dalla%20pubblicit%C3%A0." target="_blank" rel="noopener" class="final-cta">Scrivimi su WhatsApp →</a>
+          <div class="final-note">Rispondo io. Non un modulo, non un bot.</div>
+        </div>
+
+        <div class="contact-col">
+          <div class="contact-col-label">Se preferisci scrivermi qui</div>
+          <form id="contact-form" class="contact-form" action="https://formspree.io/f/xaqglzgb" method="POST">
+            <div class="cf-row">
+              <label for="cf-name">Nome</label>
+              <input id="cf-name" type="text" name="name" required autocomplete="name">
             </div>
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="#case-studies">Case study</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#final-cta">Contatti</a></li>
-                </ul>
+            <div class="cf-row">
+              <label for="cf-email">Email</label>
+              <input id="cf-email" type="email" name="email" required autocomplete="email">
             </div>
+            <div class="cf-row">
+              <label for="cf-message">Cosa gestisci in pubblicità adesso</label>
+              <textarea id="cf-message" name="message" rows="3" required></textarea>
+            </div>
+            <input type="hidden" name="_subject" value="Nuovo contatto dal sito MM Business">
+            <button type="submit" class="cf-submit">Invia →</button>
+            <div class="cf-status" data-cf-status></div>
+          </form>
         </div>
-        <div class="footer-bottom">
-            © 2026 Malcolm Ibrhim. Tutti i diritti riservati.
-        </div>
-    </footer>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        function toggleFaq(element) {
-            const answer = element.nextElementSibling;
-            const toggle = element.querySelector('.faq-toggle');
-            answer.classList.toggle('active');
-            toggle.textContent = answer.classList.contains('active') ? '−' : '+';
-        }
+</main>
 
-        function scrollToFinal() {
-            document.getElementById('final-cta').scrollIntoView({ behavior: 'smooth' });
-        }
+<footer>
+  <div class="wrap foot-inner">
+    <span>MM Business — Malcolm Ibrhim — P.IVA 17193111006 — Via del Podere Fiume 6, Roma</span>
+    <a href="https://www.instagram.com/mm_mediabuyer/" target="_blank" rel="noopener">@mm_mediabuyer</a>
+  </div>
+</footer>
 
-        function scrollToContact() {
-            const contactInfo = document.querySelector('.contact-info');
-            contactInfo.scrollIntoView({ behavior: 'smooth' });
-        }
-    </script>
+<script>
+  const receipts = document.querySelectorAll('.receipt');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  receipts.forEach(r => io.observe(r));
+
+  const form = document.getElementById('contact-form');
+  const status = form.querySelector('[data-cf-status]');
+  const submitBtn = form.querySelector('.cf-submit');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    status.textContent = 'Invio in corso…';
+    status.className = 'cf-status';
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        status.textContent = 'Ricevuto. Ti rispondo io, non un bot.';
+        status.className = 'cf-status ok';
+        form.reset();
+      } else {
+        status.textContent = 'Non è partito. Scrivimi su WhatsApp, è più veloce.';
+        status.className = 'cf-status err';
+      }
+    } catch (err) {
+      status.textContent = 'Non è partito. Scrivimi su WhatsApp, è più veloce.';
+      status.className = 'cf-status err';
+    } finally {
+      submitBtn.disabled = false;
+    }
+  });
+</script>
+
 </body>
 </html>
