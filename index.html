@@ -28,6 +28,50 @@
     --font-mono: 'IBM Plex Mono', monospace;
     --max: 780px;
     --ease-out: cubic-bezier(.2,.9,.15,1);
+    --ease-premium: cubic-bezier(0.25, 1, 0.5, 1);
+    
+    /* Variabili premium aggiuntive */
+    --blur-glass: blur(20px);
+    --gold-gradient: linear-gradient(135deg, var(--gold-dim) 0%, var(--gold) 50%, var(--gold-bright) 100%);
+    --gold-glow-premium: 0 0 25px rgba(201, 162, 39, 0.15);
+  }
+
+  /* ── DYNAMIC EFFECTS & INTERACTIVES ── */
+  .scroll-progress {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(to right, var(--gold-dim), var(--gold), var(--gold-bright), var(--gold-dim));
+    background-size: 300% 100%;
+    animation: progressGlow 4s linear infinite;
+    z-index: 102;
+    transition: width 0.1s ease-out;
+  }
+  @keyframes progressGlow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 300% 50%; }
+  }
+
+  .glow-effect {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      350px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
+      rgba(201, 162, 39, 0.12),
+      transparent 80%
+    );
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+  }
+
+  .receipt:hover .glow-effect,
+  .clausola:hover .glow-effect,
+  .livello:hover .glow-effect {
+    opacity: 1;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -83,10 +127,11 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(11,11,10,0.93);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--line);
+    background: rgba(11, 11, 10, 0.75);
+    backdrop-filter: var(--blur-glass);
+    -webkit-backdrop-filter: var(--blur-glass);
+    border-bottom: 1px solid rgba(61, 58, 48, 0.4);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5), inset 0 -1px 0 rgba(201, 162, 39, 0.05);
   }
   .nav-inner {
     max-width: var(--max);
@@ -126,19 +171,22 @@
     color: var(--text-muted);
     border: 1px solid var(--line-strong);
     padding: 8px 16px;
-    transition: border-color .2s, color .2s, background .2s;
+    transition: border-color .3s, color .3s, transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s;
     position: relative;
     overflow: hidden;
+    will-change: transform;
+    transform: translate(var(--mx, 0px), var(--my, 0px)) scale(var(--mscale, 1));
   }
-  .nav-link:hover { border-color: var(--gold); color: var(--gold-bright); background: var(--gold-glow); }
+  .nav-link:hover {
+    border-color: var(--gold);
+    color: var(--gold-bright);
+    background: var(--gold-glow);
+    box-shadow: 0 0 12px var(--gold-glow);
+  }
 
   /* ── HERO ── */
   .hero {
     padding: 0;
-    min-height: 90vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: stretch;
     position: relative;
     overflow: hidden;
   }
@@ -152,15 +200,20 @@
     background: radial-gradient(ellipse, rgba(201,162,39,0.07) 0%, transparent 68%);
     pointer-events: none;
     z-index: 0;
+    animation: ambientGlow 12s ease-in-out infinite alternate;
+  }
+  @keyframes ambientGlow {
+    0% { transform: translate(0, 0) scale(1); opacity: 0.8; }
+    50% { transform: translate(3%, 5%) scale(1.05); opacity: 1.1; }
+    100% { transform: translate(-2%, -3%) scale(0.95); opacity: 0.9; }
   }
 
   .hero-content {
-    padding: 108px 32px 88px 0;
-    max-width: 430px;
-    margin-left: auto;
+    padding: 130px 28px 96px;
+    max-width: var(--max);
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     position: relative;
     z-index: 1;
   }
@@ -236,78 +289,64 @@
     align-items: center;
     gap: 8px;
     font-family: var(--font-mono);
-    font-size: 13px;
+    font-size: 13.5px;
     letter-spacing: 0.05em;
     text-decoration: none;
     color: var(--bg);
-    background: var(--gold);
-    padding: 14px 26px;
-    transition: background .2s, transform .2s;
-  }
-  .hero-cta::after { content: '↗'; font-size: 14px; transition: transform .2s; }
-  .hero-cta:hover { background: var(--gold-bright); transform: translateY(-1px); }
-  .hero-cta:hover::after { transform: translate(2px,-2px); }
-
-  .hero-stat {
-    font-family: var(--font-mono);
-    font-size: 11.5px;
-    color: var(--text-faint);
-    letter-spacing: 0.04em;
-    line-height: 1.5;
-  }
-  .hero-stat strong { color: var(--gold); font-size: 13px; display: block; margin-bottom: 1px; }
-
-  /* photo column */
-  .hero-photo-col {
+    background: linear-gradient(135deg, var(--gold-dim), var(--gold-bright));
+    padding: 15px 28px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(201, 162, 39, 0.15);
+    transition: background-color 0.2s, box-shadow 0.3s var(--ease-premium), transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform;
+    transform: translate(var(--mx, 0px), var(--my, 0px)) scale(var(--mscale, 1));
     position: relative;
-    overflow: hidden;
   }
-  .hero-photo-col::before {
+  .hero-cta::after { content: '↗'; font-size: 14px; transition: transform .25s var(--ease-premium); }
+  .hero-cta::before {
     content: '';
     position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(to right, var(--bg) 0%, rgba(11,11,10,0.6) 28%, transparent 55%),
-      linear-gradient(to top, var(--bg) 0%, transparent 22%);
-    z-index: 2;
-    pointer-events: none;
-  }
-  .hero-photo {
-    width: 100%;
-    height: 100%;
-    min-height: 580px;
-    object-fit: cover;
-    object-position: top center;
-    display: block;
+    inset: -3px;
+    background: radial-gradient(circle, var(--gold-bright) 0%, transparent 70%);
     opacity: 0;
-    animation: fadeIn .9s ease forwards .2s;
-    filter: grayscale(6%) contrast(1.05);
+    filter: blur(10px);
+    transition: opacity 0.3s ease;
+    z-index: -1;
   }
-  .hero-badge {
-    position: absolute;
-    bottom: 40px;
-    right: 32px;
-    z-index: 10;
-    background: rgba(20,19,17,0.92);
-    border: 1px solid var(--line-strong);
-    padding: 16px 20px;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--text-muted);
-    letter-spacing: 0.04em;
-    line-height: 1.5;
+  .hero-cta:hover {
+    background: linear-gradient(135deg, var(--gold), var(--gold-bright));
+    box-shadow: 0 6px 20px rgba(201, 162, 39, 0.35), 0 0 0 2px rgba(201, 162, 39, 0.4);
+  }
+  .hero-cta:hover::before { opacity: 0.8; }
+  .hero-cta:hover::after { transform: translate(3px,-3px); }
+
+  /* stat block — sostituisce l'immagine hero: il numero fa il lavoro che faceva la foto */
+  .hero-stat-block {
+    margin-top: 44px;
+    display: flex;
+    align-items: baseline;
+    gap: 22px;
+    border-left: 2px solid var(--gold-dim);
+    padding-left: 22px;
     opacity: 0;
-    animation: fadeUp .5s ease forwards .75s;
-    backdrop-filter: blur(8px);
+    animation: fadeUp .5s ease forwards .65s;
   }
-  .hero-badge .badge-num {
-    font-size: 26px;
+  .hero-stat-num {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(40px, 6vw, 60px);
+    line-height: 1;
     color: var(--gold-bright);
-    font-weight: 700;
-    display: block;
-    margin-bottom: 3px;
-    letter-spacing: -0.02em;
+    white-space: nowrap;
   }
+  .hero-stat-text {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.03em;
+    line-height: 1.55;
+    color: var(--text-muted);
+    max-width: 22ch;
+  }
+  .hero-stat-note { display: block; margin-top: 3px; color: var(--text-faint); }
 
   /* ── SECTIONS ── */
   section { padding: 84px 0; }
@@ -347,28 +386,42 @@
     gap: 0 22px;
     padding: 32px 0;
     border-top: 1px solid var(--line);
-    transition: border-color .2s;
+    transition: border-color .2s, background .35s var(--ease-premium), color .25s ease, padding-left .25s var(--ease-premium);
+    position: relative;
+    cursor: pointer;
   }
   .livello:hover { border-color: var(--line-strong); }
   .livello:last-child { border-bottom: 1px solid var(--line); }
+  .livello.active {
+    background: radial-gradient(ellipse at center, rgba(201,162,39,0.16), rgba(201,162,39,0.04) 75%);
+    border-color: var(--gold-dim) !important;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+  .livello.active .livello-num { color: var(--gold-bright); }
+  .livello.active h3 { color: var(--gold-bright); }
+  .livello.active p { color: var(--text); }
   .livello-num {
     font-family: var(--font-mono);
     font-size: 12px;
     color: var(--gold);
     padding-top: 4px;
     letter-spacing: 0.06em;
+    transition: color .25s ease;
   }
   .livello h3 {
     font-family: var(--font-body);
     font-weight: 600;
     font-size: 17px;
     margin-bottom: 10px;
+    transition: color .25s ease;
   }
   .livello p {
     color: var(--text-muted);
     font-size: 15px;
     max-width: 56ch;
     line-height: 1.68;
+    transition: color .25s ease;
   }
 
   /* ── CLAUSOLA (meccanismo + contratto) ── */
@@ -377,17 +430,32 @@
     border-top: 1px solid var(--line);
     display: grid;
     gap: 9px;
-    transition: border-color .2s;
+    transition: border-color .2s, background .35s var(--ease-premium), color .25s ease, padding-left .25s var(--ease-premium);
+    position: relative;
+    cursor: pointer;
   }
   .clausola:hover { border-color: var(--line-strong); }
   .clausola:last-child { border-bottom: 1px solid var(--line); }
+  .clausola.active {
+    background: radial-gradient(ellipse at center, rgba(201,162,39,0.16), rgba(201,162,39,0.04) 75%);
+    border-color: var(--gold-dim) !important;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+  .clausola.active .clausola-title { color: var(--gold-bright); }
+  .clausola.active .clausola-tag {
+    color: var(--gold-bright);
+    border-color: rgba(201,162,39,0.35);
+    background: rgba(201,162,39,0.1);
+  }
+  .clausola.active p { color: var(--text); }
   .clausola-head {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
     gap: 12px;
   }
-  .clausola-title { font-weight: 600; font-size: 16px; }
+  .clausola-title { font-weight: 600; font-size: 16px; transition: color .25s ease; }
   .clausola-tag {
     font-family: var(--font-mono);
     font-size: 10.5px;
@@ -396,12 +464,14 @@
     letter-spacing: 0.06em;
     border: 1px solid var(--line-strong);
     padding: 3px 9px;
+    transition: color .25s ease, border-color .25s ease, background .25s ease;
   }
   .clausola p {
     color: var(--text-muted);
     font-size: 15px;
     max-width: 58ch;
     line-height: 1.68;
+    transition: color .25s ease;
   }
 
   /* ── CASE STUDY ── */
@@ -419,25 +489,41 @@
   }
   .case-label::before { content:''; width:14px; height:1px; background:var(--gold-dim); }
   .case-label b { color: var(--text); font-weight: 500; }
+  .case-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-faint);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border: 1px solid var(--line-strong);
+    padding: 2px 8px;
+    margin-left: 4px;
+  }
 
   .receipt {
-    background: var(--bg-panel);
-    border: 1px solid var(--line-strong);
+    background: #c7c1b0;
+    border: 1px solid #a39c8a;
     padding: 30px 26px 22px;
     position: relative;
     font-family: var(--font-mono);
+    /* Srotolamento: clip-path da top a full, opacità in ingresso — più lento e morbido */
     opacity: 0;
-    transform: translateY(16px);
-    transition: opacity .55s ease, transform .55s var(--ease-out), border-color .2s;
+    clip-path: inset(0 0 100% 0);
+    transition: opacity .3s ease, clip-path 1.3s var(--ease-out), border-color .2s;
+    transform-origin: top center;
   }
-  .receipt:hover { border-color: var(--gold-dim); }
-  .receipt.in-view { opacity: 1; transform: translateY(0); }
+  .receipt:hover { border-color: #8a6f1d; }
+  .receipt.in-view {
+    opacity: 1;
+    clip-path: inset(0 0 0% 0);
+  }
   .receipt::before, .receipt::after {
     content: '';
     position: absolute;
     left: 0; right: 0;
     height: 10px;
-    background-image: radial-gradient(circle at 6px 5px, var(--bg) 5px, transparent 5.5px);
+    /* I fori usano --receipt-hole per fondersi col nuovo sfondo chiaro */
+    background-image: radial-gradient(circle at 6px 5px, #b0a996 5px, transparent 5.5px);
     background-size: 14px 10px;
     background-repeat: repeat-x;
   }
@@ -448,23 +534,23 @@
     font-family: var(--font-body);
     font-weight: 700;
     font-size: 15.5px;
-    color: var(--text);
+    color: #2a2720;
     text-transform: uppercase;
     letter-spacing: 0.02em;
   }
-  .receipt-sub { font-size: 11px; color: var(--text-faint); margin-top: 4px; margin-bottom: 20px; }
+  .receipt-sub { font-size: 11px; color: #857f73; margin-top: 4px; margin-bottom: 20px; }
   .receipt-line {
     display: flex;
     align-items: baseline;
     gap: 8px;
     font-size: 13px;
-    color: var(--text-muted);
+    color: #5a5448;
     padding: 7px 0;
   }
   .receipt-line .k { white-space: nowrap; }
-  .receipt-line .fill { flex:1; border-bottom: 1px dotted var(--line-strong); transform: translateY(-3px); }
-  .receipt-line .v { white-space: nowrap; color: var(--text); font-weight: 500; }
-  .receipt-div { border-top: 1px dashed var(--line-strong); margin: 14px 0; }
+  .receipt-line .fill { flex:1; border-bottom: 1px dotted #a49d8b; transform: translateY(-3px); }
+  .receipt-line .v { white-space: nowrap; color: #2a2720; font-weight: 500; }
+  .receipt-div { border-top: 1px dashed #a49d8b; margin: 14px 0; }
   .receipt-total {
     display: flex;
     justify-content: space-between;
@@ -472,17 +558,17 @@
     padding: 5px 0;
     font-size: 14px;
   }
-  .receipt-total .k { color: var(--text); font-weight: 600; }
-  .receipt-total .v { color: var(--gold-bright); font-weight: 700; font-size: 15px; }
+  .receipt-total .k { color: #2a2720; font-weight: 600; }
+  .receipt-total .v { color: #6b4a0d; font-weight: 700; font-size: 15px; }
   .receipt-total.hero-num .v { font-size: 25px; }
   .receipt-note {
     margin-top: 20px;
     padding-top: 16px;
-    border-top: 1px solid var(--line);
+    border-top: 1px solid #c4bfb2;
     font-family: var(--font-body);
     font-size: 12.5px;
     font-style: italic;
-    color: var(--text-faint);
+    color: #6d6760;
     line-height: 1.62;
   }
 
@@ -515,9 +601,33 @@
     grid-template-columns: 1fr 1fr;
     border-top: 1px solid var(--line);
   }
-  .fit-col { padding: 28px 0; }
-  .fit-col:first-child { padding-right: 30px; border-right: 1px solid var(--line); }
-  .fit-col:last-child  { padding-left: 30px; }
+  .fit-col {
+    padding: 28px 22px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background .5s var(--ease-premium), opacity .5s var(--ease-premium),
+                transform .5s var(--ease-premium), filter .5s var(--ease-premium);
+  }
+  .fit-col:first-child { border-right: 1px solid var(--line); }
+  /* Stato attivo: si illumina per intero, tinta trasparente coerente col resto del sito */
+  .fit-col.active {
+    background: radial-gradient(ellipse at center, rgba(201,162,39,0.13), rgba(201,162,39,0.03) 75%);
+    opacity: 1;
+    transform: scale(1);
+    filter: none;
+  }
+  .fit-col.active .fit-head-yes,
+  .fit-col.active .fit-head-no {
+    color: var(--gold-bright);
+    border-color: rgba(201,162,39,0.4);
+    background: rgba(201,162,39,0.12);
+  }
+  /* Stato inattivo: si affievolisce e arretra leggermente */
+  .fit-col.inactive {
+    opacity: 0.5;
+    transform: scale(0.97);
+    filter: saturate(0.7);
+  }
   .fit-head {
     font-family: var(--font-mono);
     font-size: 11px;
@@ -526,6 +636,7 @@
     margin-bottom: 22px;
     padding: 6px 10px;
     display: inline-block;
+    transition: color .35s ease, border-color .35s ease, background .35s ease;
   }
   .fit-head-yes { color: var(--gold-bright); background: rgba(201,162,39,0.07); border: 1px solid rgba(201,162,39,0.22); }
   .fit-head-no  { color: var(--text-faint);  background: rgba(255,255,255,0.03); border: 1px solid var(--line); }
@@ -533,14 +644,27 @@
   .fit-list li {
     font-size: 14px;
     color: var(--text-muted);
-    padding-left: 18px;
+    padding: 7px 10px 7px 28px;
     position: relative;
     line-height: 1.5;
+    border-radius: 2px;
   }
-  .fit-list li::before { content:'—'; position:absolute; left:0; color: var(--text-faint); }
+  .fit-list li::before { content:'—'; position:absolute; left:10px; color: var(--text-faint); }
   .fit-col:first-child .fit-list li::before { color: var(--gold-dim); }
 
   /* ── CHI SONO ── */
+  .chi-grid { display: grid; grid-template-columns: 176px 1fr; gap: 34px; align-items: start; }
+  .chi-photo-col { position: relative; }
+  .chi-photo {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    filter: grayscale(6%) contrast(1.05);
+    border: 1px solid var(--line-strong);
+  }
   .chi { display: grid; gap: 20px; }
   .chi p { color: var(--text-muted); font-size: 15.5px; max-width: 58ch; line-height: 1.72; }
   .chi strong { color: var(--text); font-weight: 600; }
@@ -571,19 +695,35 @@
     letter-spacing: 0.04em;
     text-decoration: none;
     color: var(--bg);
-    background: var(--gold);
+    background: linear-gradient(135deg, var(--gold-dim), var(--gold-bright));
     padding: 16px 28px;
-    transition: background .2s, transform .2s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(201, 162, 39, 0.15);
+    transition: background-color 0.2s, box-shadow 0.3s var(--ease-premium), transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform;
+    transform: translate(var(--mx, 0px), var(--my, 0px)) scale(var(--mscale, 1));
+    position: relative;
   }
-  .final-cta::after { content: '→'; }
-  .final-cta:hover { background: var(--gold-bright); transform: translateY(-1px); }
+  .final-cta::after { content: '→'; font-size: 14px; transition: transform .25s var(--ease-premium); }
+  .final-cta::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    background: radial-gradient(circle, var(--gold-bright) 0%, transparent 70%);
+    opacity: 0;
+    filter: blur(10px);
+    transition: opacity 0.3s ease;
+    z-index: -1;
+  }
+  .final-cta:hover {
+    background: linear-gradient(135deg, var(--gold), var(--gold-bright));
+    box-shadow: 0 6px 20px rgba(201, 162, 39, 0.35), 0 0 0 2px rgba(201, 162, 39, 0.4);
+  }
+  .final-cta:hover::before { opacity: 0.8; }
+  .final-cta:hover::after { transform: translateX(3px); }
   .final-note { margin-top: 18px; font-family: var(--font-mono); font-size: 11.5px; color: var(--text-faint); }
 
-  .contact-split {
+  .contact-primary {
     margin-top: 46px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 52px;
     border-top: 1px solid var(--line);
     padding-top: 38px;
   }
@@ -595,6 +735,22 @@
     color: var(--text-faint);
     margin-bottom: 18px;
   }
+  /* alternativa al WhatsApp — collassata di default, stesso peso di un link, non di un canale alla pari */
+  .contact-alt { margin-top: 30px; }
+  .contact-alt-toggle {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--gold);
+    cursor: pointer;
+    border-bottom: 1px solid var(--gold-dim);
+    list-style: none;
+    transition: color .15s, border-color .15s;
+  }
+  .contact-alt-toggle::-webkit-details-marker { display: none; }
+  .contact-alt-toggle:hover { color: var(--gold-bright); border-color: var(--gold-bright); }
+  .contact-alt[open] .contact-alt-toggle { margin-bottom: 22px; }
+  .contact-alt .contact-form { margin-top: 4px; }
   .contact-form { display: flex; flex-direction: column; gap: 16px; max-width: 340px; }
   .cf-row { display: flex; flex-direction: column; gap: 7px; }
   .cf-row label {
@@ -621,14 +777,32 @@
     font-size: 12.5px;
     letter-spacing: 0.05em;
     color: var(--bg);
-    background: var(--gold);
+    background: linear-gradient(135deg, var(--gold-dim), var(--gold-bright));
     border: none;
     padding: 12px 22px;
     cursor: pointer;
-    transition: background .15s;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(201, 162, 39, 0.15);
+    transition: background-color 0.2s, box-shadow 0.3s var(--ease-premium), transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform;
+    transform: translate(var(--mx, 0px), var(--my, 0px)) scale(var(--mscale, 1));
+    position: relative;
   }
-  .cf-submit:hover { background: var(--gold-bright); }
-  .cf-submit:disabled { opacity: 0.6; cursor: default; }
+  .cf-submit::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    background: radial-gradient(circle, var(--gold-bright) 0%, transparent 70%);
+    opacity: 0;
+    filter: blur(10px);
+    transition: opacity 0.3s ease;
+    z-index: -1;
+  }
+  .cf-submit:hover {
+    background: linear-gradient(135deg, var(--gold), var(--gold-bright));
+    box-shadow: 0 6px 18px rgba(201, 162, 39, 0.35), 0 0 0 2px rgba(201, 162, 39, 0.4);
+  }
+  .cf-submit:hover::before { opacity: 0.8; }
+  .cf-submit:disabled { opacity: 0.6; cursor: default; transform: none !important; }
   .cf-status { font-family: var(--font-mono); font-size: 11.5px; color: var(--text-faint); min-height: 16px; }
   .cf-status.ok  { color: var(--gold-bright); }
   .cf-status.err { color: #c96b27; }
@@ -648,55 +822,84 @@
   .foot-inner a { text-decoration: none; color: var(--text-faint); transition: color .15s; }
   .foot-inner a:hover { color: var(--gold); }
 
+  /* ── AI DISCLOSURE (Art. 50 AI Act) ── */
+
+  /* Label sotto il ritratto in "Chi sono" — statica, non più overlay su foto hero */
+  .chi-ai-label {
+    /* [AI-DISCLOSURE-CHI] Trasparenza AI Act Art. 50 — label immagine generata con AI */
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.05em;
+    color: var(--text-faint);
+    margin-top: 9px;
+    line-height: 1.4;
+  }
+  .chi-ai-label::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--gold-dim);
+    flex-shrink: 0;
+    opacity: 0.8;
+  }
+
+  /* Nota di trasparenza nel footer — sito realizzato con supporto AI + supervisione umana */
+  .foot-ai-note {
+    /* [AI-DISCLOSURE-FOOTER] Trasparenza AI Act Art. 50 — nota realizzazione sito */
+    width: 100%;
+    padding-top: 14px;
+    margin-top: 6px;
+    border-top: 1px solid var(--line);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-faint);
+    letter-spacing: 0.03em;
+    line-height: 1.6;
+    opacity: 0.75;
+  }
+
   /* ── SCROLL REVEAL ── */
   .reveal {
     opacity: 0;
-    transform: translateY(16px);
-    transition: opacity .55s ease, transform .55s var(--ease-out);
+    transform: translateY(24px);
+    transition: opacity 0.8s var(--ease-premium), transform 0.8s var(--ease-premium);
+    will-change: transform, opacity;
   }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
   /* ── RESPONSIVE ── */
   @media (max-width: 720px) {
     :root { --max: 100%; }
-    .hero {
-      grid-template-columns: 1fr;
-      min-height: unset;
-    }
     .hero-content {
       padding: 80px 24px 48px;
       max-width: 100%;
-      margin-left: 0;
+      margin: 0;
     }
-    .hero-photo-col {
-      order: -1;
-      height: 60vw;
-      min-height: 260px;
-    }
-    .hero-photo { min-height: unset; height: 100%; }
-    .hero-photo-col::before {
-      background: linear-gradient(to bottom, transparent 40%, var(--bg) 100%);
-    }
-    .hero-badge { bottom: 16px; right: 16px; }
+    .hero-stat-block { margin-top: 34px; padding-left: 16px; gap: 16px; }
     h1 { font-size: clamp(34px, 9vw, 52px); }
     .wrap { padding: 0 20px; }
     section { padding: 62px 0; }
     .livello { grid-template-columns: 36px 1fr; gap: 0 14px; }
     .clausola-head { flex-direction: column; gap: 4px; }
     .fit-grid { grid-template-columns: 1fr; }
-    .fit-col:first-child { padding-right: 0; border-right: none; border-bottom: 1px solid var(--line); padding-bottom: 28px; }
-    .fit-col:last-child  { padding-left: 0; }
-    .contact-split { grid-template-columns: 1fr; gap: 36px; }
+    .fit-col:first-child { border-right: none; border-bottom: 1px solid var(--line); padding-bottom: 28px; }
+    .chi-grid { grid-template-columns: 1fr; }
+    .chi-photo-col { max-width: 160px; }
   }
   @media (max-width: 480px) {
     .hero-cta-row { flex-direction: column; align-items: flex-start; gap: 14px; }
   }
   @media (prefers-reduced-motion: reduce) {
-    h1, .hero-sub, .hero-cta-row, .hero-photo, .hero-badge, .receipt, .reveal {
+    h1, .hero-sub, .hero-cta-row, .hero-stat-block, .receipt, .reveal, .fit-list li {
       animation: none !important;
       transition: none !important;
       opacity: 1 !important;
       transform: none !important;
+      clip-path: none !important;
     }
   }
 
@@ -712,6 +915,7 @@
     </a>
     <a href="https://wa.me/393923134623?text=Ciao%20Malcolm%2C%20ho%20visto%20il%20sito.%20Voglio%20sapere%20quanto%20mi%20costa%20un%20cliente%20dalla%20pubblicit%C3%A0." target="_blank" rel="noopener" class="nav-link" id="nav-whatsapp">Scrivimi</a>
   </div>
+  <div class="scroll-progress" aria-hidden="true"></div>
 </header>
 
 <main id="top">
@@ -724,18 +928,10 @@
       <p class="hero-sub">Il motivo di solito è semplice: chi la gestisce — anche se sei tu — guarda i numeri sbagliati. Io guardo uno solo: quanto ti costa un cliente vero.</p>
       <div class="hero-cta-row">
         <a href="https://wa.me/393923134623?text=Ciao%20Malcolm%2C%20ho%20visto%20il%20sito.%20Voglio%20sapere%20quanto%20mi%20costa%20un%20cliente%20dalla%20pubblicit%C3%A0." target="_blank" rel="noopener" class="hero-cta" id="hero-whatsapp">Scrivimi su WhatsApp</a>
-        <div class="hero-stat">
-          <strong>27€ per ogni euro speso</strong>
-          caso reale — scuola formazione Roma
-        </div>
       </div>
-    </div>
-
-    <div class="hero-photo-col" aria-hidden="true">
-      <img src="malcolm.jpg" alt="Malcolm Ibrhim — Media Buyer Roma" class="hero-photo" width="720" height="900">
-      <div class="hero-badge">
-        <span class="badge-num">27x</span>
-        ritorno campagna<br>scuola formazione
+      <div class="hero-stat-block">
+        <span class="hero-stat-num count-up" data-value="27" data-suffix="X">0X</span>
+        <span class="hero-stat-text">ritorno sull'investimento della campagna<span class="hero-stat-note">caso reale &mdash; scuola formazione Roma</span></span>
       </div>
     </div>
   </section>
@@ -754,7 +950,7 @@
           <div class="livello-num">01</div>
           <div>
             <h3>Spendi e non sai se torna indietro</h3>
-            <p>Prova una cosa: quanto ti costa in media un cliente, dalla pubblicità? Se non ti è venuto un numero preciso in tre secondi — o hai pensato "i risultati sono buoni" invece che a una cifra — il problema non è la pubblicità. È che nessuno te lo sta misurando.</p>
+            <p>Prova una cosa: quanto ti costa in media un cliente, dalla pubblicità? Se non ti è venuto un numero preciso in tre secondi — o hai pensato "i risultati sono buoni" invece che a una cifra — il problema non è la pubblicità. È che nessuno te lo sta misurando. E ogni settimana che passa senza quel numero è un'altra settimana di budget speso senza sapere se torna.</p>
           </div>
         </div>
         <div class="livello reveal">
@@ -822,35 +1018,36 @@
           <div class="receipt-title">Relaunch &mdash; 20 maggio / 1 luglio</div>
           <div class="receipt-sub">campagna in corso, dati aggiornati al periodo indicato</div>
 
-          <div class="receipt-line"><span class="k">Richieste ricevute</span><span class="fill"></span><span class="v">182</span></div>
-          <div class="receipt-line"><span class="k">Costo per richiesta</span><span class="fill"></span><span class="v">&euro; 3,01</span></div>
-          <div class="receipt-line"><span class="k">Appuntamenti fissati</span><span class="fill"></span><span class="v">30</span></div>
-          <div class="receipt-line"><span class="k">Costo per appuntamento</span><span class="fill"></span><span class="v">&euro; 18,27</span></div>
-          <div class="receipt-line"><span class="k">Persone diventate clienti</span><span class="fill"></span><span class="v">6</span></div>
-          <div class="receipt-line"><span class="k">Costo per cliente</span><span class="fill"></span><span class="v">&euro; 91,36</span></div>
+          <div class="receipt-line"><span class="k">Richieste ricevute</span><span class="fill"></span><span class="v count-up" data-value="182">0</span></div>
+          <div class="receipt-line"><span class="k">Costo per richiesta</span><span class="fill"></span><span class="v count-up" data-value="3.01" data-prefix="&euro;&nbsp;" data-decimals="2">0</span></div>
+          <div class="receipt-line"><span class="k">Appuntamenti fissati</span><span class="fill"></span><span class="v count-up" data-value="30">0</span></div>
+          <div class="receipt-line"><span class="k">Costo per appuntamento</span><span class="fill"></span><span class="v count-up" data-value="18.27" data-prefix="&euro;&nbsp;" data-decimals="2">0</span></div>
+          <div class="receipt-line"><span class="k">Persone diventate clienti</span><span class="fill"></span><span class="v count-up" data-value="6">0</span></div>
+          <div class="receipt-line"><span class="k">Costo per cliente</span><span class="fill"></span><span class="v count-up" data-value="91.36" data-prefix="&euro;&nbsp;" data-decimals="2">0</span></div>
           <div class="receipt-div"></div>
-          <div class="receipt-total"><span class="k">Incassato dai 6 clienti</span><span class="v">&euro; 15.000</span></div>
-          <div class="receipt-total hero-num"><span class="k">Torna per ogni euro speso</span><span class="v">27&euro;</span></div>
+          <div class="receipt-total"><span class="k">Incassato dai 6 clienti</span><span class="v count-up" data-value="15000" data-prefix="&euro;&nbsp;" data-thousand-separator=".">0</span></div>
+          <div class="receipt-total hero-num"><span class="k">Torna per ogni euro speso</span><span class="v count-up" data-value="27" data-suffix="&euro;">0</span></div>
 
           <div class="receipt-note">&euro;91,36 per portare un cliente che paga &euro;2.500 per il corso. Se oggi non sai quanto ti costa un cliente per la tua attività, è lì che si nasconde il margine perso. &mdash; Nota: numeri della campagna in corso nel periodo indicato, non di tutto lo storico del cliente. Settore reso generico per accordo con chi mi paga ogni mese &mdash; i numeri no.</div>
         </div>
       </div>
 
       <div class="case">
-        <div class="case-label">Caso 2 &mdash; <b>studio odontoiatrico</b>, servizi premium</div>
+        <div class="case-label">Caso 2 &mdash; <b>studio odontoiatrico</b>, servizi premium <span class="case-tag">Campione piccolo</span></div>
         <div class="receipt">
           <div class="receipt-title">Prima campagna, budget contenuto</div>
           <div class="receipt-sub">modulo contatti diretto, nessuna landing esterna</div>
 
-          <div class="receipt-line"><span class="k">Richieste ricevute</span><span class="fill"></span><span class="v">8</span></div>
-          <div class="receipt-line"><span class="k">Costo per richiesta</span><span class="fill"></span><span class="v">&euro; 24,31</span></div>
-          <div class="receipt-line"><span class="k">Persone diventate clienti</span><span class="fill"></span><span class="v">2</span></div>
-          <div class="receipt-line"><span class="k">Costo per cliente</span><span class="fill"></span><span class="v">&euro; 97,23</span></div>
+          <div class="receipt-line"><span class="k">Richieste ricevute</span><span class="fill"></span><span class="v count-up" data-value="8">0</span></div>
+          <div class="receipt-line"><span class="k">Costo per richiesta</span><span class="fill"></span><span class="v count-up" data-value="24.31" data-prefix="&euro;&nbsp;" data-decimals="2">0</span></div>
+          <div class="receipt-line"><span class="k">Persone diventate clienti</span><span class="fill"></span><span class="v count-up" data-value="2">0</span></div>
+          <div class="receipt-line"><span class="k">Costo per cliente</span><span class="fill"></span><span class="v count-up" data-value="97.23" data-prefix="&euro;&nbsp;" data-decimals="2">0</span></div>
           <div class="receipt-div"></div>
-          <div class="receipt-total"><span class="k">Incassato dai 2 clienti</span><span class="v">&euro; 16.000</span></div>
-          <div class="receipt-total hero-num"><span class="k">Torna per ogni euro speso</span><span class="v">82&euro;</span></div>
+          <div class="receipt-total"><span class="k">Incassato dai 2 clienti</span><span class="v count-up" data-value="16000" data-prefix="&euro;&nbsp;" data-thousand-separator=".">0</span></div>
+          <div class="receipt-total"><span class="k">Torna per ogni euro speso</span><span class="v count-up" data-value="82" data-suffix="&euro;">0</span></div>
+          <div class="receipt-total hero-num"><span class="k">Costo per cliente &rarr; quanto vale</span><span class="v">&euro;97,23 &rarr; &euro;8.000</span></div>
 
-          <div class="receipt-note">&euro;97,23 per portare un cliente che paga in media &euro;8.000 di trattamento. Il campione è piccolo &mdash; 2 clienti su 8 richieste &mdash; il rapporto tra costo e incasso è reale. Nota: numeri della campagna nel periodo, non di tutto lo storico.</div>
+          <div class="receipt-note">Il campione è piccolo &mdash; 2 clienti su 8 richieste &mdash; il rapporto tra costo e incasso è reale, non proiettato. Numeri della campagna nel periodo indicato, non di tutto lo storico.</div>
         </div>
       </div>
 
@@ -867,8 +1064,8 @@
   <section id="meccanismo">
     <div class="wrap">
       <div class="eyebrow">Come lavoro, non una formula segreta</div>
-      <h2>Perché torna questo numero, e non un altro.</h2>
-      <p class="section-lede reveal">Tre cose concrete. Non garantiscono lo stesso risultato per ogni attività &mdash; spiegano perché quello che hai appena visto non è un colpo di fortuna.</p>
+      <h2>Quattro cose concrete. Non una formula.</h2>
+      <p class="section-lede reveal">Non garantiscono lo stesso risultato per ogni attività — spiegano perché quello che hai appena visto non è un colpo di fortuna.</p>
 
       <div style="margin-top:34px;">
         <div class="clausola reveal">
@@ -876,21 +1073,28 @@
             <div class="clausola-title">Guardo un numero solo</div>
             <div class="clausola-tag">COSTO PER CLIENTE</div>
           </div>
-          <p>Non quanti like prende un post, non quante persone lo vedono. Se un annuncio non porta clienti, lo cambio &mdash; non aspetto che "maturi".</p>
+          <p>Non quanti like prende un post, non quante persone lo vedono. Se un annuncio non porta clienti, lo cambio — non aspetto che "maturi".</p>
         </div>
         <div class="clausola reveal">
           <div class="clausola-head">
-            <div class="clausola-title">Le creatività le faccio io</div>
+            <div class="clausola-title">Le creatività restano dentro il processo</div>
             <div class="clausola-tag">RIPRESE, MONTAGGIO, TESTI</div>
           </div>
-          <p>Se qualcosa non funziona lo so il giorno dopo, non tra due settimane di andirivieni con un'agenzia esterna. Nessun tavolo intermedio tra me e il risultato.</p>
+          <p>Quando giro di persona, il ciclo è corto per definizione. Quando non sono sul posto, fornisco lo script, la sceneggiatura e supervisiono il girato — poi monto io. Nessun intermediario decide cosa appare nell'annuncio al posto mio. Questo è il motivo diretto per cui il problema che hai letto sopra — "chi te la gestisce guadagna uguale" — non si applica: non c'è un tavolo intermedio tra me e il risultato che tu paghi.</p>
         </div>
         <div class="clausola reveal">
           <div class="clausola-head">
-            <div class="clausola-title">Lavoro a Roma, per Roma</div>
+            <div class="clausola-title">Lavoro a Roma, preferibilmente per Roma</div>
             <div class="clausola-tag">MERCATO LOCALE</div>
           </div>
-          <p>Non gestisco pubblicità per un quartiere che non ho mai visto. Conosco le categorie merceologiche, il tessuto economico, chi compra cosa e in quale zona.</p>
+          <p>Se il lavoro richiede riprese sul posto, le faccio io: conosco il tessuto economico, le zone, chi compra cosa. Non è un paletto rigido che esclude altre configurazioni — è una preferenza forte che nasce da un vantaggio reale: non gestisco pubblicità per un mercato che non ho mai visto.</p>
+        </div>
+        <div class="clausola reveal">
+          <div class="clausola-head">
+            <div class="clausola-title">Lavoro dentro il funnel, non solo sull'annuncio</div>
+            <div class="clausola-tag">PARTNER, NON FORNITORE</div>
+          </div>
+          <p>L'advertising è la prima parte del percorso — se si rompe più a valle, i risultati non arrivano anche con annunci perfetti. Non gestisco le tue chiamate o le tue prenotazioni. Ma se noto un attrito nel percorso — una landing che scoraggia, una gestione delle richieste che disperde i contatti — lo segnalo con precisione: cosa, dove, come provare a sistemarlo. Lavoro come se facessi parte della struttura, non da fornitore che consegna un pacchetto e sparisce. Questo rientra in ciò che il fisso mensile già copre — non è un servizio separato.</p>
         </div>
       </div>
     </div>
@@ -911,7 +1115,7 @@
             <div class="clausola-title">Fisso mensile</div>
             <div class="clausola-tag">COPRE IL LAVORO</div>
           </div>
-          <p>Gestione, ottimizzazione, resoconti &mdash; dichiarati prima, per iscritto, con il perimetro esatto di cosa include. Nessuna sorpresa a metà mese.</p>
+          <p>Gestione, ottimizzazione, resoconti &mdash; dichiarati prima, per iscritto, con il perimetro esatto di cosa include. Nessuna sorpresa a metà mese. Non è un numero uguale per tutti: dipende da quanto lavoro c'è da fare. Te lo dico in chiamata, con la stessa trasparenza di tutto il resto &mdash; non è un segreto, è solo che varia.</p>
         </div>
         <div class="clausola reveal">
           <div class="clausola-head">
@@ -938,11 +1142,26 @@
     <div class="wrap">
       <div class="eyebrow">Chi gestisce i tuoi annunci</div>
       <h2>Malcolm Ibrhim. Media buyer e chi fa i video &mdash; non due persone diverse.</h2>
-      <div class="chi reveal" style="margin-top:26px;">
-        <p>Lavoro a Roma, per attività di Roma &mdash; non gestisco pubblicità per una zona che non ho mai visto.</p>
-        <p><strong>Partita IVA regime forfettario</strong> &mdash; tutto verificabile, contratto scritto, nessuna cifra detta a voce e dimenticata dopo.</p>
-        <div>
-          <span class="chi-verifica">P.IVA 17193111006 &mdash; verificabile al registro imprese</span>
+      <div class="chi-grid reveal" style="margin-top:26px;">
+        <div class="chi-photo-col">
+          <img
+            src="malcolm_premium_png_2K_202607191250.jpeg"
+            alt="Ritratto professionale di Malcolm Ibrhim, media buyer — immagine realizzata con strumenti di intelligenza artificiale"
+            class="chi-photo"
+            width="1024"
+            height="1280"
+            loading="lazy"
+          >
+          <p class="chi-ai-label" aria-label="Nota: immagine realizzata con strumenti di intelligenza artificiale">
+            Immagine realizzata con strumenti di intelligenza artificiale.
+          </p>
+        </div>
+        <div class="chi">
+          <p>Sono di Roma, e preferisco lavorare con attività romane — non perché sia un limite contrattuale, ma perché è lì che posso essere più utile: conosco il mercato, le zone, il tessuto economico. Se il lavoro richiede riprese sul posto, le faccio io. Per configurazioni diverse, si valuta — ma il punto di partenza è Roma.</p>
+          <p><strong>Partita IVA regime forfettario</strong> &mdash; tutto verificabile, contratto scritto, nessuna cifra detta a voce e dimenticata dopo.</p>
+          <div>
+            <span class="chi-verifica">P.IVA 17193111006 &mdash; verificabile al registro imprese</span>
+          </div>
         </div>
       </div>
     </div>
@@ -957,15 +1176,13 @@
       <h2>Non ti serve un'altra promessa. Ti serve sapere quanto ti costa un cliente.</h2>
       <p class="section-lede">Quindici minuti, senza impegno. Guardo le tue campagne attive e ti dico cosa vedo &mdash; in numeri, non in aggettivi.</p>
 
-      <div class="contact-split">
-        <div class="contact-col">
-          <div class="contact-col-label">Diretto</div>
-          <a href="https://wa.me/393923134623?text=Ciao%20Malcolm%2C%20ho%20visto%20il%20sito.%20Voglio%20sapere%20quanto%20mi%20costa%20un%20cliente%20dalla%20pubblicit%C3%A0." target="_blank" rel="noopener" class="final-cta" id="final-whatsapp">Scrivimi su WhatsApp</a>
-          <div class="final-note">Rispondo io. Non un modulo, non un bot.</div>
-        </div>
+      <div class="contact-primary">
+        <div class="contact-col-label">Il canale più veloce</div>
+        <a href="https://wa.me/393923134623?text=Ciao%20Malcolm%2C%20ho%20visto%20il%20sito.%20Voglio%20sapere%20quanto%20mi%20costa%20un%20cliente%20dalla%20pubblicit%C3%A0." target="_blank" rel="noopener" class="final-cta" id="final-whatsapp">Scrivimi su WhatsApp</a>
+        <div class="final-note">Rispondo io. Non un modulo, non un bot.</div>
 
-        <div class="contact-col">
-          <div class="contact-col-label">Se preferisci scrivermi qui</div>
+        <details class="contact-alt">
+          <summary class="contact-alt-toggle">o scrivimi qui se preferisci non usare WhatsApp &rarr;</summary>
           <form id="contact-form" class="contact-form" action="https://formspree.io/f/xaqglzgb" method="POST">
             <div class="cf-row">
               <label for="cf-name">Nome</label>
@@ -983,7 +1200,7 @@
             <button type="submit" class="cf-submit">Invia &rarr;</button>
             <div class="cf-status" data-cf-status></div>
           </form>
-        </div>
+        </details>
       </div>
     </div>
   </section>
@@ -994,18 +1211,55 @@
   <div class="wrap foot-inner">
     <span>MM Business &middot; Malcolm Ibrhim &middot; P.IVA 17193111006 &middot; Via del Podere Fiume 6, Roma</span>
     <a href="https://www.instagram.com/mm_mediabuyer/" target="_blank" rel="noopener">@mm_mediabuyer</a>
+    <!-- c) Nota footer: sito realizzato con supporto AI sotto supervisione editoriale umana -->
+    <p class="foot-ai-note">
+      Questo sito è stato realizzato con il supporto di strumenti di intelligenza artificiale
+      sotto la supervisione, revisione e controllo editoriale di Malcolm Ibrhim.
+    </p>
   </div>
 </footer>
 
 <script>
-  /* receipt scroll reveal */
+  // ── COSTANTI MODIFICABILI ──────────────────────────────────
+  const FIT_CAROUSEL_INTERVAL = 3500; // ms tra ogni voce evidenziata nelle colonne Sì/No
+  // ──────────────────────────────────────────────────────────
+
+  // Disable magnetic and parallax effects on touch devices to ensure good UX
+  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+  // Respect prefers-reduced-motion for new interactive features
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* receipt scroll reveal — clip-path unroll, con rete di sicurezza */
   const receipts = document.querySelectorAll('.receipt');
+
+  function revealReceiptIfVisible(el) {
+    if (el.classList.contains('in-view')) return;
+    const rect = el.getBoundingClientRect();
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    if (rect.top < vh * 0.95 && rect.bottom > 0) {
+      el.classList.add('in-view');
+    }
+  }
+
   const rObs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) { e.target.classList.add('in-view'); rObs.unobserve(e.target); }
     });
-  }, { threshold: 0.18 });
+  }, { threshold: 0.05 });  // soglia bassa: la clip-path nasconde la parte inferiore
   receipts.forEach(r => rObs.observe(r));
+
+  // Rete di sicurezza: se per qualunque motivo l'observer non scatta (troppi listener
+  // di scroll/rAF in concorrenza, tab in background, ecc.), un controllo diretto sulla
+  // posizione dello scontrino garantisce comunque che diventi visibile.
+  function checkReceiptsFallback() {
+    receipts.forEach(revealReceiptIfVisible);
+  }
+  window.addEventListener('scroll', checkReceiptsFallback, { passive: true });
+  window.addEventListener('resize', checkReceiptsFallback, { passive: true });
+  checkReceiptsFallback();               // nel caso siano già in vista al caricamento
+  setTimeout(checkReceiptsFallback, 400);
+  setTimeout(checkReceiptsFallback, 1500);
 
   /* generic reveal with sibling stagger */
   const reveals = document.querySelectorAll('.reveal');
@@ -1022,7 +1276,185 @@
   }, { threshold: 0.12 });
   reveals.forEach(r => vObs.observe(r));
 
-  /* contact form */
+  /* ── TASK 1 — Toggle sfondo oro su .livello e .clausola ── */
+  (function initCellToggle() {
+    // Tutte le celle cliccabili (livello + clausola)
+    const cells = document.querySelectorAll('.livello, .clausola');
+    cells.forEach(cell => {
+      cell.addEventListener('click', () => {
+        const wasActive = cell.classList.contains('active');
+        // Disattiva tutte le celle dello stesso tipo nella stessa sezione
+        const parent = cell.closest('section') || document.body;
+        parent.querySelectorAll('.livello, .clausola').forEach(c => c.classList.remove('active'));
+        // Toggle: se non era attiva, attivala; se era già attiva, lasciala deselezionata
+        if (!wasActive) cell.classList.add('active');
+      });
+    });
+  })();
+
+  /* ── TASK 2 — Alternanza a blocco intero tra le due colonne fit-col ── */
+  (function initFitBlockSwitcher() {
+    const cols = Array.from(document.querySelectorAll('.fit-col'));
+    if (cols.length < 2) return;
+
+    let current = 0;
+    let timer = null;
+    let pinned = false; // true dopo un click manuale: ferma la rotazione automatica
+
+    function setActive(idx) {
+      cols.forEach((col, i) => {
+        col.classList.toggle('active', i === idx);
+        col.classList.toggle('inactive', i !== idx);
+      });
+      current = idx;
+    }
+
+    function advance() {
+      if (pinned) return;
+      setActive((current + 1) % cols.length);
+    }
+
+    // Stato iniziale: primo blocco attivo
+    setActive(0);
+
+    if (!prefersReducedMotion) {
+      timer = setInterval(advance, FIT_CAROUSEL_INTERVAL);
+    }
+
+    // Click su un blocco: lo fissa come attivo e ferma la rotazione automatica
+    cols.forEach((col, idx) => {
+      col.addEventListener('click', () => {
+        pinned = true;
+        if (timer) clearInterval(timer);
+        setActive(idx);
+      });
+    });
+  })();
+
+  /* Glow mouse tracker initialization with requestAnimationFrame optimization */
+  document.querySelectorAll('.receipt, .clausola, .livello, .contact-form').forEach(el => {
+    const glow = document.createElement('div');
+    glow.className = 'glow-effect';
+    el.appendChild(glow);
+    
+    let ticking = false;
+    
+    el.addEventListener('mousemove', e => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const rect = el.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          el.style.setProperty('--mouse-x', `${x}px`);
+          el.style.setProperty('--mouse-y', `${y}px`);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  });
+
+  /* Magnetic Buttons Effect for Desktop */
+  if (!isTouchDevice) {
+    const magneticButtons = document.querySelectorAll('.hero-cta, .final-cta, .cf-submit, .nav-link');
+    
+    magneticButtons.forEach(btn => {
+      btn.addEventListener('mousemove', e => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - (rect.left + rect.width / 2);
+        const y = e.clientY - (rect.top + rect.height / 2);
+        
+        // Attraction strength: max 12px horizontal, 10px vertical translation
+        const maxTranslateX = 12;
+        const maxTranslateY = 10;
+        
+        const moveX = (x / (rect.width / 2)) * maxTranslateX;
+        const moveY = (y / (rect.height / 2)) * maxTranslateY;
+        
+        btn.style.setProperty('--mx', `${moveX}px`);
+        btn.style.setProperty('--my', `${moveY}px`);
+        btn.style.setProperty('--mscale', `1.03`);
+      });
+      
+      btn.addEventListener('mouseleave', () => {
+        btn.style.setProperty('--mx', `0px`);
+        btn.style.setProperty('--my', `0px`);
+        btn.style.setProperty('--mscale', `1`);
+      });
+    });
+  }
+
+  /* Scroll progress bar optimized */
+  const progress = document.querySelector('.scroll-progress');
+  if (progress) {
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const h = document.documentElement;
+          const b = document.body;
+          const st = 'scrollTop';
+          const sh = 'scrollHeight';
+          const percent = (h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight) * 100;
+          progress.style.width = percent + '%';
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
+  /* Count-up numbers animation */
+  function animateCountUp(el) {
+    const target = parseFloat(el.getAttribute('data-value'));
+    const prefix = el.getAttribute('data-prefix') || '';
+    const suffix = el.getAttribute('data-suffix') || '';
+    const decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+    const useThousand = el.hasAttribute('data-thousand-separator');
+    const thousandSeparator = el.getAttribute('data-thousand-separator') || '';
+    
+    const duration = 1500; // 1.5s
+    let startTime = null;
+    
+    function step(timestamp) {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      // Easing out quintic
+      const easeProgress = 1 - Math.pow(1 - progress, 5);
+      const currentValue = easeProgress * target;
+      
+      let formattedValue = currentValue.toFixed(decimals);
+      if (decimals > 0) {
+        formattedValue = formattedValue.replace('.', ',');
+      }
+      
+      if (useThousand) {
+        const parts = formattedValue.split(',');
+        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, thousandSeparator);
+        formattedValue = parts.join(',');
+      }
+      
+      el.innerHTML = prefix + formattedValue + suffix;
+      
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    }
+    requestAnimationFrame(step);
+  }
+
+  const countUpElements = document.querySelectorAll('.count-up');
+  const cObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        animateCountUp(e.target);
+        cObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  countUpElements.forEach(el => cObs.observe(el));
+
+  /* contact form submission handler */
   const form = document.getElementById('contact-form');
   const status = form.querySelector('[data-cf-status]');
   const btn = form.querySelector('.cf-submit');
