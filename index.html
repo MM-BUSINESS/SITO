@@ -210,7 +210,7 @@
 
   .hero-content {
     padding: 130px 28px 96px;
-    max-width: var(--max);
+    max-width: 960px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -242,9 +242,10 @@
     font-family: var(--font-display);
     font-weight: 400;
     text-transform: uppercase;
-    font-size: clamp(36px, 5vw, 62px);
-    line-height: 1.03;
+    font-size: clamp(36px, 5.4vw, 68px);
+    line-height: 1.08;
     letter-spacing: 0.005em;
+    max-width: 23ch;
     opacity: 0;
     transform: translateY(12px);
     animation: hardIn .45s var(--ease-out) forwards .1s;
@@ -880,7 +881,7 @@
       margin: 0;
     }
     .hero-stat-block { margin-top: 34px; padding-left: 16px; gap: 16px; }
-    h1 { font-size: clamp(34px, 9vw, 52px); }
+    h1 { font-size: clamp(34px, 9vw, 52px); max-width: none; }
     .wrap { padding: 0 20px; }
     section { padding: 62px 0; }
     .livello { grid-template-columns: 36px 1fr; gap: 0 14px; }
@@ -889,6 +890,16 @@
     .fit-col:first-child { border-right: none; border-bottom: 1px solid var(--line); padding-bottom: 28px; }
     .chi-grid { grid-template-columns: 1fr; }
     .chi-photo-col { max-width: 160px; }
+    .receipt-total.hero-num {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .receipt-total.hero-num .k { white-space: normal; }
+    .receipt-total.hero-num .v {
+      font-size: 19px;
+      white-space: nowrap;
+    }
   }
   @media (max-width: 480px) {
     .hero-cta-row { flex-direction: column; align-items: flex-start; gap: 14px; }
@@ -901,6 +912,295 @@
       transform: none !important;
       clip-path: none !important;
     }
+  }
+
+  /* ── COOKIE CONSENT ── */
+  #cookie-banner {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 999;
+    background: var(--bg-alt, #14130f);
+    border-top: 1px solid var(--line-strong);
+    padding: 22px 28px;
+    transform: translateY(110%);
+    transition: transform .35s var(--ease-out, ease);
+  }
+  #cookie-banner.visible { transform: translateY(0); }
+  .cookie-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 20px 32px;
+  }
+  .cookie-text { flex: 1 1 380px; }
+  .cookie-text p {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    max-width: 62ch;
+  }
+  .cookie-text p strong { color: var(--text); font-weight: 500; }
+  .cookie-detail-toggle {
+    display: inline-block;
+    margin-top: 8px;
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--gold);
+    cursor: pointer;
+    border-bottom: 1px solid var(--gold-dim);
+  }
+  .cookie-detail-toggle:hover { color: var(--gold-bright); }
+  .cookie-detail { display: none; margin-top: 14px; }
+  .cookie-detail.open { display: block; }
+  .cookie-cat {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 0;
+    border-top: 1px solid var(--line);
+  }
+  .cookie-cat:first-child { border-top: none; }
+  .cookie-cat-label {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--text);
+    letter-spacing: 0.03em;
+  }
+  .cookie-cat-label span {
+    display: block;
+    margin-top: 3px;
+    font-size: 11px;
+    color: var(--text-faint);
+    font-weight: 400;
+  }
+  .cookie-switch {
+    position: relative;
+    flex-shrink: 0;
+    width: 38px;
+    height: 21px;
+  }
+  .cookie-switch input { position: absolute; opacity: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+  .cookie-switch-track {
+    position: absolute;
+    inset: 0;
+    background: var(--line-strong);
+    border: 1px solid var(--line-strong);
+    transition: background .15s;
+    pointer-events: none;
+  }
+  .cookie-switch-track::before {
+    content: '';
+    position: absolute;
+    top: 2px; left: 2px;
+    width: 15px; height: 15px;
+    background: var(--text-faint);
+    transition: transform .15s, background .15s;
+  }
+  .cookie-switch input:checked + .cookie-switch-track { background: rgba(197,163,84,0.18); border-color: var(--gold-dim); }
+  .cookie-switch input:checked + .cookie-switch-track::before { transform: translateX(17px); background: var(--gold-bright); }
+  .cookie-switch input:disabled + .cookie-switch-track { opacity: .5; cursor: not-allowed; }
+  .cookie-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 14px;
+    flex-shrink: 0;
+  }
+  .cookie-btn {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.03em;
+    padding: 11px 18px;
+    cursor: pointer;
+    border: 1px solid var(--line-strong);
+    background: transparent;
+    color: var(--text-muted);
+    transition: border-color .15s, color .15s;
+    white-space: nowrap;
+  }
+  .cookie-btn:hover { border-color: var(--gold-dim); color: var(--text); }
+  .cookie-btn-primary {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: #14130f;
+    font-weight: 600;
+  }
+  .cookie-btn-primary:hover { background: var(--gold-bright); border-color: var(--gold-bright); color: #14130f; }
+  .cookie-manage-link {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text);
+    cursor: pointer;
+    border-bottom: 1px solid var(--text);
+    font-weight: 500;
+  }
+  .cookie-manage-link:hover { color: var(--gold-bright); border-color: var(--gold-bright); }
+  @media (max-width: 720px) {
+    #cookie-banner { padding: 20px 20px calc(20px + env(safe-area-inset-bottom, 0px)); }
+    .cookie-actions { width: 100%; }
+    .cookie-btn { flex: 1 1 auto; text-align: center; }
+  }
+
+  /* ── PRIVACY POLICY MODAL ── */
+  .privacy-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(11, 11, 10, 0.85);
+    backdrop-filter: var(--blur-glass);
+    -webkit-backdrop-filter: var(--blur-glass);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .privacy-modal.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .privacy-modal-content {
+    background: var(--bg-panel);
+    border: 1px solid var(--line-strong);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(201, 162, 39, 0.05);
+    width: 90%;
+    max-width: 680px;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 38px;
+    position: relative;
+    scrollbar-width: thin;
+    scrollbar-color: var(--line-strong) var(--bg-panel);
+  }
+  .privacy-modal-content::-webkit-scrollbar {
+    width: 6px;
+  }
+  .privacy-modal-content::-webkit-scrollbar-track {
+    background: var(--bg-panel);
+  }
+  .privacy-modal-content::-webkit-scrollbar-thumb {
+    background: var(--line-strong);
+    border-radius: 3px;
+  }
+  .privacy-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+  .privacy-modal-title {
+    font-family: var(--font-display);
+    font-size: clamp(20px, 3vw, 26px);
+    text-transform: uppercase;
+    color: var(--gold-bright);
+    font-weight: 400;
+  }
+  .privacy-modal-close {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 24px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 4px 8px;
+    transition: color 0.2s;
+  }
+  .privacy-modal-close:hover {
+    color: var(--text);
+  }
+  .privacy-body {
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: var(--text-muted);
+  }
+  .privacy-body h3 {
+    font-family: var(--font-mono);
+    color: var(--text);
+    font-size: 13.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 24px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 4px;
+  }
+  .privacy-body h3:first-of-type {
+    margin-top: 0;
+  }
+  .privacy-body p {
+    margin-bottom: 14px;
+  }
+  .privacy-body ul {
+    margin-bottom: 14px;
+    padding-left: 20px;
+  }
+  .privacy-body li {
+    margin-bottom: 6px;
+  }
+  .privacy-body strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+  .privacy-body .ai-alert-box {
+    border: 1px solid rgba(201, 162, 39, 0.3);
+    background: rgba(201, 162, 39, 0.04);
+    padding: 16px;
+    margin: 20px 0;
+    border-radius: 2px;
+  }
+  .privacy-body .ai-alert-box strong {
+    color: var(--gold-bright);
+  }
+
+  /* Checkbox privacy nel form contatti */
+  .cf-privacy-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 4px;
+    margin-bottom: 8px;
+  }
+  .cf-privacy-row input[type="checkbox"] {
+    margin-top: 3px;
+    accent-color: var(--gold);
+    cursor: pointer;
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+  .cf-privacy-row label {
+    font-size: 11.5px;
+    line-height: 1.45;
+    color: var(--text-muted);
+    text-transform: none;
+    letter-spacing: normal;
+    cursor: pointer;
+    user-select: none;
+    text-align: left;
+  }
+  .cf-privacy-row label a {
+    color: var(--gold);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .cf-privacy-row label a:hover {
+    color: var(--gold-bright);
+  }
+
+  .cookie-policy-link {
+    color: var(--gold);
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  .cookie-policy-link:hover {
+    color: var(--gold-bright);
   }
 
 </style>
@@ -924,7 +1224,7 @@
   <section class="hero" aria-label="Introduzione">
     <div class="hero-content">
       <div class="hero-eyebrow">Media buyer <span>&amp;</span> produzione video &mdash; Roma</div>
-      <h1>Spendi in<br>pubblicità.<br>Non sai se ti<br>sta facendo<br><span class="accent">guadagnare<br>o perdere.</span></h1>
+      <h1>Spendi in pubblicità. Non sai se ti sta facendo <span class="accent">guadagnare o perdere.</span></h1>
       <p class="hero-sub">Il motivo di solito è semplice: chi la gestisce — anche se sei tu — guarda i numeri sbagliati. Io guardo uno solo: quanto ti costa un cliente vero.</p>
       <div class="hero-cta-row">
         <a href="https://wa.me/393923134623?text=Ciao%20Malcolm%2C%20ho%20visto%20il%20sito.%20Voglio%20sapere%20quanto%20mi%20costa%20un%20cliente%20dalla%20pubblicit%C3%A0." target="_blank" rel="noopener" class="hero-cta" id="hero-whatsapp">Scrivimi su WhatsApp</a>
@@ -1045,7 +1345,7 @@
           <div class="receipt-div"></div>
           <div class="receipt-total"><span class="k">Incassato dai 2 clienti</span><span class="v count-up" data-value="16000" data-prefix="&euro;&nbsp;" data-thousand-separator=".">0</span></div>
           <div class="receipt-total"><span class="k">Torna per ogni euro speso</span><span class="v count-up" data-value="82" data-suffix="&euro;">0</span></div>
-          <div class="receipt-total hero-num"><span class="k">Costo per cliente &rarr; quanto vale</span><span class="v">&euro;97,23 &rarr; &euro;8.000</span></div>
+          <div class="receipt-total hero-num"><span class="k">Costo cliente vs valore</span><span class="v">&euro;97,23 &rarr; &euro;8.000</span></div>
 
           <div class="receipt-note">Il campione è piccolo &mdash; 2 clienti su 8 richieste &mdash; il rapporto tra costo e incasso è reale, non proiettato. Numeri della campagna nel periodo indicato, non di tutto lo storico.</div>
         </div>
@@ -1196,6 +1496,10 @@
               <label for="cf-message">Cosa gestisci in pubblicità adesso</label>
               <textarea id="cf-message" name="message" rows="3" required></textarea>
             </div>
+            <div class="cf-privacy-row">
+              <input type="checkbox" id="cf-privacy" name="privacy_consent" required>
+              <label for="cf-privacy">Acconsento al trattamento dei dati personali secondo l'<a href="#" class="view-privacy-trigger">Informativa Privacy</a>.</label>
+            </div>
             <input type="hidden" name="_subject" value="Nuovo contatto dal sito MM Business">
             <button type="submit" class="cf-submit">Invia &rarr;</button>
             <div class="cf-status" data-cf-status></div>
@@ -1211,6 +1515,8 @@
   <div class="wrap foot-inner">
     <span>MM Business &middot; Malcolm Ibrhim &middot; P.IVA 17193111006 &middot; Via del Podere Fiume 6, Roma</span>
     <a href="https://www.instagram.com/mm_mediabuyer/" target="_blank" rel="noopener">@mm_mediabuyer</a>
+    <span class="cookie-manage-link" id="cookie-manage-link" role="button" tabindex="0">Gestisci cookie</span>
+    <span class="cookie-manage-link view-privacy-trigger" role="button" tabindex="0">Informativa Privacy</span>
     <!-- c) Nota footer: sito realizzato con supporto AI sotto supervisione editoriale umana -->
     <p class="foot-ai-note">
       Questo sito è stato realizzato con il supporto di strumenti di intelligenza artificiale
@@ -1219,7 +1525,319 @@
   </div>
 </footer>
 
+<!-- COOKIE CONSENT BANNER -->
+<div id="cookie-banner" role="dialog" aria-label="Preferenze cookie" aria-live="polite">
+  <div class="cookie-inner">
+    <div class="cookie-text">
+      <p><strong>Uso i cookie tecnici necessari al funzionamento del sito.</strong> Con il tuo consenso, uso anche cookie di statistiche (Clarity, Analytics) e marketing (Meta Pixel, Google Ads) per capire cosa funziona — nessun dato viene venduto a terzi. Leggi l'<a href="#" class="cookie-policy-link view-privacy-trigger">Informativa Privacy &amp; Cookie</a>.</p>
+      <span class="cookie-detail-toggle" id="cookie-detail-toggle" role="button" tabindex="0">Scegli quali attivare</span>
+
+      <div class="cookie-detail" id="cookie-detail">
+        <div class="cookie-cat">
+          <div class="cookie-cat-label">Necessari<span>Fanno funzionare il sito. Sempre attivi, non richiedono consenso.</span></div>
+          <div class="cookie-switch">
+            <input type="checkbox" checked disabled aria-label="Cookie necessari, sempre attivi">
+            <span class="cookie-switch-track"></span>
+          </div>
+        </div>
+        <div class="cookie-cat">
+          <div class="cookie-cat-label">Statistiche<span>Microsoft Clarity, Google Analytics — capisco come le persone usano il sito.</span></div>
+          <div class="cookie-switch">
+            <input type="checkbox" id="cookie-toggle-stats" aria-label="Attiva cookie di statistiche">
+            <span class="cookie-switch-track"></span>
+          </div>
+        </div>
+        <div class="cookie-cat">
+          <div class="cookie-cat-label">Marketing<span>Meta Pixel, Google Ads — mostro annunci più pertinenti a chi ha già visitato.</span></div>
+          <div class="cookie-switch">
+            <input type="checkbox" id="cookie-toggle-marketing" aria-label="Attiva cookie di marketing">
+            <span class="cookie-switch-track"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cookie-actions">
+      <button type="button" class="cookie-btn" id="cookie-reject">Rifiuta</button>
+      <button type="button" class="cookie-btn" id="cookie-save" style="display:none;">Salva preferenze</button>
+      <button type="button" class="cookie-btn cookie-btn-primary" id="cookie-accept">Accetta tutti</button>
+    </div>
+  </div>
+</div>
+
+<!-- INFORMATIVA PRIVACY MODAL -->
+<div id="privacy-modal" class="privacy-modal" role="dialog" aria-modal="true" aria-labelledby="privacy-title">
+  <div class="privacy-modal-content">
+    <div class="privacy-modal-header">
+      <h2 id="privacy-title" class="privacy-modal-title">Informativa Privacy &amp; Cookie</h2>
+      <button type="button" class="privacy-modal-close" id="privacy-modal-close" aria-label="Chiudi informativa">&times;</button>
+    </div>
+    <div class="privacy-body">
+      <h3>1. Titolare del Trattamento</h3>
+      <p>Il Titolare del trattamento dei dati è <strong>Malcolm Ibrhim</strong> (MM Business), P.IVA 17193111006, con sede in Via del Podere Fiume 6, Roma. Per qualsiasi domanda o richiesta in merito al trattamento dei dati personali, puoi scrivere all'indirizzo email: <strong>malcolm.ibrhim@gmail.com</strong>.</p>
+
+      <h3>2. Dati Raccolti e Finalità</h3>
+      <p>Trattiamo solo i dati personali strettamente necessari al funzionamento del sito e a rispondere alle tue richieste:</p>
+      <ul>
+        <li><strong>Dati di Contatto:</strong> Nome, email e dettagli sul tuo business inviati spontaneamente tramite il modulo di contatto, utilizzati esclusivamente per risponderti e formulare una proposta (base giuridica: esecuzione di misure precontrattuali o contrattuali).</li>
+        <li><strong>Dati di Navigazione (Cookie):</strong> Indirizzo IP anonimizzato e dati sull'utilizzo del sito per statistiche e marketing, raccolti solo in caso di tuo consenso esplicito nel banner (base giuridica: consenso).</li>
+      </ul>
+
+      <div class="ai-alert-box">
+        <h3>3. Trasparenza sull'uso dell'Intelligenza Artificiale (AI Act &amp; GDPR)</h3>
+        <p>In conformità con l'<strong>Articolo 50 del Regolamento Europeo sull'Intelligenza Artificiale (AI Act)</strong> e le linee guida del GDPR, si dichiara che:</p>
+        <ul>
+          <li><strong>Contenuti Visivi e Testuali:</strong> Il ritratto fotografico del Titolare e parte dei testi di questo sito sono stati generati o ottimizzati con il supporto di sistemi di Intelligenza Artificiale generativa. Ogni contenuto è stato revisionato, validato e approvato sotto la piena supervisione editoriale e responsabilità umana del Titolare.</li>
+          <li><strong>Algoritmi di Marketing di Terze Parti:</strong> Se acconsenti all'attivazione dei cookie di marketing (Meta Pixel, Google Ads), le rispettive piattaforme utilizzano algoritmi di machine learning e intelligenza artificiale per ottimizzare l'efficacia delle campagne pubblicitarie e proporti annunci pertinenti. Il Titolare non effettua alcuna profilazione autonoma né adotta decisioni automatizzate basate su questi dati.</li>
+        </ul>
+      </div>
+
+      <h3>4. Cookie in uso</h3>
+      <p>Questo sito utilizza cookie per migliorare l'esperienza di navigazione. I cookie non necessari vengono attivati solo dopo il consenso:</p>
+      <ul>
+        <li><strong>Necessari:</strong> Cookie tecnici per salvare le preferenze sul consenso dei cookie. Sempre attivi.</li>
+        <li><strong>Statistiche (previo consenso):</strong> Microsoft Clarity e Google Analytics (GA4) con IP anonimizzato, per analizzare il traffico del sito in forma aggregata.</li>
+        <li><strong>Marketing (previo consenso):</strong> Meta Pixel e Google Ads, per tracciare conversioni e mostrare annunci personalizzati su reti di terze parti.</li>
+      </ul>
+
+      <h3>5. Conservazione dei Dati e Diritti dell'Utente</h3>
+      <p>I dati del modulo di contatto sono conservati per il tempo necessario a gestire la richiesta (massimo 12 mesi, salvo instaurazione di un rapporto professionale). Ai sensi del GDPR, hai il diritto di accedere ai tuoi dati, chiederne la rettifica, la cancellazione, la limitazione del trattamento o la portabilità, nonché di opporti al trattamento o revocare il consenso in qualsiasi momento. Puoi esercitare questi diritti scrivendo a <strong>malcolm.ibrhim@gmail.com</strong>.</p>
+    </div>
+  </div>
+</div>
+
 <script>
+  /* ══════════════════════════════════════════════════════════
+     COOKIE CONSENT — GDPR
+     Nessun cookie non necessario viene impostato prima del consenso esplicito.
+     Due categorie indipendenti, entrambe spente di default:
+       - statistiche  → Microsoft Clarity, Google Analytics
+       - marketing    → Meta Pixel, Google Ads
+     "Accetta tutti" attiva entrambe con un click. "Rifiuta" le lascia spente.
+     ══════════════════════════════════════════════════════════ */
+  (function cookieConsent() {
+    const CONSENT_KEY = 'mm_cookie_consent';
+
+    function getConsent() {
+      try {
+        const raw = localStorage.getItem(CONSENT_KEY);
+        return raw ? JSON.parse(raw) : null;
+      } catch (e) { return null; }
+    }
+
+    function saveConsent(stats, marketing) {
+      const consent = {
+        necessary: true,
+        stats: !!stats,
+        marketing: !!marketing,
+        ts: new Date().toISOString()
+      };
+      try { localStorage.setItem(CONSENT_KEY, JSON.stringify(consent)); } catch (e) {}
+      return consent;
+    }
+
+    function applyConsent(consent) {
+      if (!consent) return;
+      if (consent.stats) { loadClarity(); loadGoogleAnalytics(); }
+      if (consent.marketing) { loadMetaPixel(); loadGoogleAds(); }
+    }
+
+    /*
+     * [CLARITY-PLACEHOLDER] Sostituisci "XXXXXXXXXX" con il project ID di
+     * Microsoft Clarity (clarity.microsoft.com → crea progetto → Setup → Project ID),
+     * poi togli i // dalle righe dello snippet.
+     */
+    function loadClarity() {
+      if (window.__clarityLoaded) return;
+      window.__clarityLoaded = true;
+      // (function(c,l,a,r,i,t,y){
+      //   c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      //   t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      //   y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      // })(window, document, "clarity", "script", "XXXXXXXXXX");
+    }
+
+    /*
+     * [GA4-PLACEHOLDER] Sostituisci "G-XXXXXXXXXX" con il Measurement ID
+     * di Google Analytics 4 (analytics.google.com → Amministrazione → Flussi di dati),
+     * poi togli i // dalle righe dello snippet.
+     */
+    function loadGoogleAnalytics() {
+      if (window.__gaLoaded) return;
+      window.__gaLoaded = true;
+      // const gaScript = document.createElement('script');
+      // gaScript.async = true;
+      // gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
+      // document.head.appendChild(gaScript);
+      // window.dataLayer = window.dataLayer || [];
+      // function gtag(){ dataLayer.push(arguments); }
+      // gtag('js', new Date());
+      // gtag('config', 'G-XXXXXXXXXX');
+    }
+
+    /*
+     * [META-PIXEL-PLACEHOLDER] Pixel ID: 1230953368454129
+     * Attivazione volutamente rimandata finché il sito non è ritenuto stabile
+     * (vedi report di ripartenza). Per attivarlo: togli i // dallo snippet sotto.
+     */
+    function loadMetaPixel() {
+      if (window.__metaPixelLoaded) return;
+      window.__metaPixelLoaded = true;
+      // !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      // n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      // n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+      // t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+      // document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      // fbq('init', '1230953368454129');
+      // fbq('track', 'PageView');
+    }
+
+    /*
+     * [GOOGLE-ADS-PLACEHOLDER] Sostituisci "AW-XXXXXXXXXX" con l'ID di conversione
+     * Google Ads (ads.google.com → Strumenti → Conversioni → Tag del sito web),
+     * poi togli i // dalle righe dello snippet. Se hai già attivato GA4 sopra,
+     * puoi anche solo aggiungere 'config' con l'ID Ads nello stesso gtag.
+     */
+    function loadGoogleAds() {
+      if (window.__googleAdsLoaded) return;
+      window.__googleAdsLoaded = true;
+      // const adsScript = document.createElement('script');
+      // adsScript.async = true;
+      // adsScript.src = 'https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXXX';
+      // document.head.appendChild(adsScript);
+      // window.dataLayer = window.dataLayer || [];
+      // function gtag(){ dataLayer.push(arguments); }
+      // gtag('js', new Date());
+      // gtag('config', 'AW-XXXXXXXXXX');
+    }
+
+    const banner = document.getElementById('cookie-banner');
+    const detailToggle = document.getElementById('cookie-detail-toggle');
+    const detail = document.getElementById('cookie-detail');
+    const statsToggle = document.getElementById('cookie-toggle-stats');
+    const marketingToggle = document.getElementById('cookie-toggle-marketing');
+    const acceptBtn = document.getElementById('cookie-accept');
+    const rejectBtn = document.getElementById('cookie-reject');
+    const saveBtn = document.getElementById('cookie-save');
+    const manageLink = document.getElementById('cookie-manage-link');
+
+    const required = { banner, detailToggle, detail, statsToggle, marketingToggle, acceptBtn, rejectBtn, saveBtn, manageLink };
+    for (const key in required) {
+      if (!required[key]) {
+        console.warn('[cookie-consent] elemento mancante nel DOM:', key);
+      }
+    }
+    if (!banner || !acceptBtn || !rejectBtn) return; // senza questi, il banner non può funzionare in sicurezza
+
+    function showBanner() { banner.classList.add('visible'); }
+    function hideBanner() { banner.classList.remove('visible'); }
+
+    function openDetail() {
+      if (detail) detail.classList.add('open');
+      if (saveBtn) saveBtn.style.display = 'inline-block';
+    }
+
+    if (detailToggle) {
+      detailToggle.addEventListener('click', openDetail);
+      detailToggle.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') openDetail(); });
+    }
+
+    acceptBtn.addEventListener('click', function () {
+      if (statsToggle) statsToggle.checked = true;
+      if (marketingToggle) marketingToggle.checked = true;
+      const consent = saveConsent(true, true);
+      applyConsent(consent);
+      hideBanner();
+    });
+
+    rejectBtn.addEventListener('click', function () {
+      if (statsToggle) statsToggle.checked = false;
+      if (marketingToggle) marketingToggle.checked = false;
+      saveConsent(false, false);
+      hideBanner();
+    });
+
+    if (saveBtn) {
+      saveBtn.addEventListener('click', function () {
+        const consent = saveConsent(
+          statsToggle ? statsToggle.checked : false,
+          marketingToggle ? marketingToggle.checked : false
+        );
+        applyConsent(consent);
+        hideBanner();
+      });
+    }
+
+    function openPreferences() {
+      const existing = getConsent();
+      if (existing) {
+        if (statsToggle) statsToggle.checked = !!existing.stats;
+        if (marketingToggle) marketingToggle.checked = !!existing.marketing;
+      }
+      openDetail();
+      showBanner();
+    }
+
+    if (manageLink) {
+      manageLink.addEventListener('click', openPreferences);
+      manageLink.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') openPreferences(); });
+    }
+
+    const existing = getConsent();
+    if (existing) {
+      applyConsent(existing);
+    } else {
+      // Nessuna scelta salvata: mostra il banner subito, nessun cookie non necessario nel frattempo
+      showBanner();
+    }
+  })();
+
+  /* ── PRIVACY POLICY MODAL CONTROLLER ── */
+  (function initPrivacyModal() {
+    const modal = document.getElementById('privacy-modal');
+    const closeBtn = document.getElementById('privacy-modal-close');
+    const triggers = document.querySelectorAll('.view-privacy-trigger');
+
+    if (!modal || !closeBtn) return;
+
+    function openModal(e) {
+      if (e) e.preventDefault();
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden'; // Impedisce lo scroll di sfondo
+      closeBtn.focus();
+    }
+
+    function closeModal() {
+      modal.classList.remove('open');
+      document.body.style.overflow = ''; // Ripristina lo scroll
+    }
+
+    triggers.forEach(trigger => {
+      trigger.addEventListener('click', openModal);
+      trigger.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          openModal(e);
+        }
+      });
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+
+    // Chiude cliccando sullo sfondo sfocato
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+
+    // Chiude premendo il tasto Escape
+    window.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.classList.contains('open')) {
+        closeModal();
+      }
+    });
+  })();
+
   // ── COSTANTI MODIFICABILI ──────────────────────────────────
   const FIT_CAROUSEL_INTERVAL = 3500; // ms tra ogni voce evidenziata nelle colonne Sì/No
   // ──────────────────────────────────────────────────────────
