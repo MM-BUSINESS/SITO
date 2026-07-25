@@ -1595,13 +1595,26 @@
       <h3>4. Cookie in uso</h3>
       <p>Questo sito utilizza cookie per migliorare l'esperienza di navigazione. I cookie non necessari vengono attivati solo dopo il consenso:</p>
       <ul>
-        <li><strong>Necessari:</strong> Cookie tecnici per salvare le preferenze sul consenso dei cookie. Sempre attivi.</li>
-        <li><strong>Statistiche (previo consenso):</strong> Microsoft Clarity e Google Analytics (GA4) con IP anonimizzato, per analizzare il traffico del sito in forma aggregata.</li>
-        <li><strong>Marketing (previo consenso):</strong> Meta Pixel e Google Ads, per tracciare conversioni e mostrare annunci personalizzati su reti di terze parti.</li>
+        <li><strong>Necessari:</strong> Cookie tecnici (memorizza la tua scelta sui cookie). Prima parte. Durata: 12 mesi. Sempre attivi, non richiedono consenso.</li>
+        <li><strong>Statistiche (previo consenso):</strong> Microsoft Clarity e Google Analytics (GA4), con IP anonimizzato, per analizzare il traffico del sito in forma aggregata. Terze parti. Durata tipica: fino a 24 mesi (varia in base al cookie impostato dal fornitore — dettagli nelle rispettive informative: <a href="https://privacy.microsoft.com/it-it/privacystatement" target="_blank" rel="noopener">Microsoft</a>, <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google</a>).</li>
+        <li><strong>Marketing (previo consenso):</strong> Meta Pixel e Google Ads, per tracciare conversioni e mostrare annunci personalizzati su reti di terze parti. Terze parti. Durata tipica: fino a 90 giorni (Meta) o 24 mesi (Google Ads) — dettagli nelle rispettive informative: <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener">Meta</a>, <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google</a>.</li>
       </ul>
 
-      <h3>5. Conservazione dei Dati e Diritti dell'Utente</h3>
-      <p>I dati del modulo di contatto sono conservati per il tempo necessario a gestire la richiesta (massimo 12 mesi, salvo instaurazione di un rapporto professionale). Ai sensi del GDPR, hai il diritto di accedere ai tuoi dati, chiederne la rettifica, la cancellazione, la limitazione del trattamento o la portabilità, nonché di opporti al trattamento o revocare il consenso in qualsiasi momento. Puoi esercitare questi diritti scrivendo a <strong>malcolm.ibrhim@gmail.com</strong>.</p>
+      <h3>5. Destinatari dei Dati e Trasferimenti Extra-UE</h3>
+      <p>I tuoi dati possono essere trattati dai seguenti soggetti terzi, in qualità di responsabili del trattamento o titolari autonomi, esclusivamente per le finalità sopra indicate:</p>
+      <ul>
+        <li><strong>Formspree Inc.</strong> (USA) — riceve e inoltra via email i dati inseriti nel modulo di contatto.</li>
+        <li><strong>GitHub Inc.</strong> (USA) — ospita il sito (GitHub Pages).</li>
+        <li><strong>Microsoft, Google, Meta</strong> (USA) — solo se acconsenti ai cookie di statistiche e/o marketing, per le finalità descritte al punto 4.</li>
+      </ul>
+      <p>Questi fornitori hanno sede negli Stati Uniti. Il trasferimento dei dati verso gli USA avviene sulla base della decisione di adeguatezza della Commissione Europea relativa al <strong>Data Privacy Framework UE-USA</strong> (per i fornitori aderenti) o, in assenza, sulla base di clausole contrattuali standard approvate dalla Commissione Europea. Nessun dato viene venduto a terzi.</p>
+
+      <h3>6. Conservazione dei Dati</h3>
+      <p>I dati del modulo di contatto sono conservati per il tempo necessario a gestire la richiesta (massimo 12 mesi, salvo instaurazione di un rapporto professionale, nel qual caso si applicano i termini di conservazione fiscale e contrattuale previsti dalla legge). I cookie di statistiche e marketing restano attivi per le durate indicate al punto 4, salvo revoca anticipata del consenso.</p>
+
+      <h3>7. Diritti dell'Utente e Reclamo</h3>
+      <p>Ai sensi del GDPR, hai il diritto di accedere ai tuoi dati, chiederne la rettifica, la cancellazione, la limitazione del trattamento o la portabilità, nonché di opporti al trattamento o revocare il consenso in qualsiasi momento (la revoca non pregiudica la liceità del trattamento già effettuato). Puoi esercitare questi diritti scrivendo a <strong>malcolm.ibrhim@gmail.com</strong>.</p>
+      <p>Se ritieni che il trattamento dei tuoi dati violi la normativa vigente, hai il diritto di proporre reclamo al <strong>Garante per la Protezione dei Dati Personali</strong> (<a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">www.garanteprivacy.it</a>), Piazza Venezia 11, 00187 Roma, o all'autorità di controllo del tuo Stato membro di residenza abituale.</p>
     </div>
   </div>
 </div>
@@ -1676,20 +1689,35 @@
     }
 
     /*
-     * [META-PIXEL-PLACEHOLDER] Pixel ID: 1230953368454129
-     * Attivazione volutamente rimandata finché il sito non è ritenuto stabile
-     * (vedi report di ripartenza). Per attivarlo: togli i // dallo snippet sotto.
+     * META PIXEL — ID: 1230953368454129
+     * Attivo. PageView al caricamento (dopo consenso Marketing) +
+     * tre eventi custom di permanenza sulla pagina a 10s / 30s / 60s,
+     * per capire se chi arriva legge davvero o rimbalza subito.
      */
     function loadMetaPixel() {
       if (window.__metaPixelLoaded) return;
       window.__metaPixelLoaded = true;
-      // !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      // n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-      // n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-      // t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-      // document,'script','https://connect.facebook.net/en_US/fbevents.js');
-      // fbq('init', '1230953368454129');
-      // fbq('track', 'PageView');
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+      document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1230953368454129');
+      fbq('track', 'PageView');
+
+      // Eventi di permanenza — fired una sola volta ciascuno, solo se il tab è ancora visibile
+      var engagementTimers = [
+        { ms: 10000, name: 'Engagement_10s' },
+        { ms: 30000, name: 'Engagement_30s' },
+        { ms: 60000, name: 'Engagement_60s' }
+      ];
+      engagementTimers.forEach(function (t) {
+        setTimeout(function () {
+          if (document.visibilityState === 'visible') {
+            fbq('trackCustom', t.name);
+          }
+        }, t.ms);
+      });
     }
 
     /*
@@ -1790,6 +1818,24 @@
       // Nessuna scelta salvata: mostra il banner subito, nessun cookie non necessario nel frattempo
       showBanner();
     }
+  })();
+
+  /* ── META PIXEL — EVENTO LEAD SU WHATSAPP E FORM ──
+     Parte solo se il Pixel è attivo (cioè solo dopo consenso Marketing).
+     Un evento Lead per ogni CTA, con content_name per distinguere
+     quale punto del sito ha generato la richiesta. */
+  (function trackLeadEvents() {
+    function fireLead(sourceName) {
+      if (typeof fbq === 'function') {
+        fbq('track', 'Lead', { content_name: sourceName });
+      }
+    }
+    ['nav-whatsapp', 'hero-whatsapp', 'mid-whatsapp', 'final-whatsapp'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.addEventListener('click', function () { fireLead(id); });
+    });
+    var form = document.getElementById('contact-form');
+    if (form) form.addEventListener('submit', function () { fireLead('contact-form'); });
   })();
 
   /* ── PRIVACY POLICY MODAL CONTROLLER ── */
